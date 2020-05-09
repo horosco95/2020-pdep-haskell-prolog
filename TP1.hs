@@ -28,8 +28,7 @@ calculoPatental patenteAuto | (('4'==).last) patenteAuto = ((3000*).length) pate
 --parte 1 - (Integrante A)
 
 esAutoPeligroso::Auto -> Bool
-esAutoPeligroso auto | (('5.1'>).head) desgasteLlantas auto = True
-                     | otherwise = False
+esAutoPeligroso auto = (('5.1'>).head) desgasteLlantas auto
 
 --parte 2 - (Integrante B)
 necesitaRevision :: Auto -> Bool
