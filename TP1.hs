@@ -1,16 +1,16 @@
-type Desgaste = Number
+type Desgaste = Float
 type Patente = String
-type Fecha = (Number, Number, Number)
+type Fecha = (Int, Int, Int)
 
 -- Definiciones base
-anio :: Fecha -> Number
+anio :: Fecha -> Int
 anio (_, _, year) = year
 
 data Auto = Auto {
   patente :: Patente,
   desgasteLlantas :: [Desgaste],
-  rpm :: Number,
-  temperaturaAgua :: Number,
+  rpm :: Int,
+  temperaturaAgua :: Int,
   ultimoArreglo :: Fecha
 } deriving Show
 
