@@ -15,7 +15,7 @@ data Auto = Auto {
 } deriving Show
 
 --Punto 1
-costoReparacion :: Auto -> Int
+costoReparacion:: Auto -> Int
 costoReparacion auto | (('7'==).length) patente auto = 12500
                      | "DJ"<= patente auto && patente auto <="NB" = calculoPatental (patente auto)
                      | otherwise = 15000
@@ -27,7 +27,9 @@ calculoPatental patenteAuto | (('4'==).last) patenteAuto = ((3000*).length) pate
 --Punto 2
 --parte 1 - (Integrante A)
 
-
+esAutoPeligroso::Auto -> Bool
+esAutoPeligroso auto | (('5.1'>).head) desgasteLlantas auto = True
+                     | otherwise = False
 
 --parte 2 - (Integrante B)
 
