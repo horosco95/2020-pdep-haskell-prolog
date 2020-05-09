@@ -16,7 +16,7 @@ data Auto = Auto {
 
 --Punto 1
 costoReparacion :: Auto -> Int
-costoReparacion auto | length (patente auto) == 7 = 12500
+costoReparacion auto | (('7'==).length) patente auto = 12500
                      | "DJ"<= patente auto && patente auto <="NB" = calculoPatental (patente auto)
                      | otherwise = 15000
 
