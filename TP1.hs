@@ -32,8 +32,8 @@ esAutoPeligroso auto | (('5.1'>).head) desgasteLlantas auto = True
                      | otherwise = False
 
 --parte 2 - (Integrante B)
-
-
+necesitaRevision :: Auto -> Bool
+necesitaRevision = (<=2015).anio.ultimoArreglo
 --Punto 3
 --parte 1 - (Integrante A)
 
