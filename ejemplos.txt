@@ -1,0 +1,34 @@
+vehiculo1 :: Auto
+vehiculo1 = Auto {
+ patente = "AT001LN",
+ desgasteLlantas= [0.5, 0.15, 0.31, 0.45] ,
+ rpm = 2050,
+ temperaturaAgua = 60,
+ ultimoArreglo = (12,9,2016)
+}
+
+vehiculo2 :: Auto
+vehiculo2 = Auto {
+ patente = "DJV214",
+ desgasteLlantas= [0.51, 0.23, 0.28, 0.33] ,
+ rpm = 1850,
+ temperaturaAgua = 80,
+ ultimoArreglo = (12,9,2015)
+}
+vehiculo3 :: Auto
+vehiculo3 = Auto {
+ patente = "DJV215",
+ desgasteLlantas= [0.5, 0.44, 0.66, 0.6] ,
+ rpm = 2230,
+ temperaturaAgua = 98,
+ ultimoArreglo = (12,9,2018)
+}
+
+vehiculo4 :: Auto
+vehiculo4 = Auto {
+ patente = "DFH029",
+ desgasteLlantas= [0.51, 0.71, 0.6, 0.75] ,
+ rpm = 1700,
+ temperaturaAgua = 70,
+ ultimoArreglo = (12,9,2014)
+}
