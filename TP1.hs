@@ -34,17 +34,38 @@ esAutoPeligroso = (>0.5).head.desgasteLlantas
 --parte 2 - (Hermes)
 necesitaRevision :: Auto -> Bool
 necesitaRevision = (<=2015).anio.ultimoArreglo
+
+
 --Punto 3
---parte 1 - (Gonzalo)
-
-
-
---parte 2 - (Hermes)
 data Empleado = Empleado {
  nombre :: String,
  edad :: Int,
  funciones::(Auto->Auto)
 } deriving Show
+
+operaciones::Empleado->Auto->Auto
+operaciones mecanico auto= (funciones mecanico) auto
+
+--parte 1 - (Gonzalo)
+
+alfa :: Empleado
+alfa = Empleado {nombre="Alfa", edad=28, funciones = regularVueltas}
+
+bravo :: Empleado
+bravo = Empleado {nombre="Bravo", edad=30, funciones = cambioLlantas}
+
+charly :: Empleado
+charly = empleado {nombre="Charly", edad=35, funciones = (funciones alfa).(funciones bravo)}
+
+regularVueltas :: Auto -> Auto
+regularVueltas auto | (>2000) (rpm auto) = auto {rpm = 2000}
+                    | otherwise = auto
+
+cambioLlantas :: Auto -> Auto
+cambioLlantas auto = auto {desgasteLlantas = (\[_,_,_,_]->[0,0,0,0]) (desgasteLlantas auto)}
+
+
+--parte 2 - (Hermes)
 
 tango :: Empleado
 tango = Empleado {nombre="Tango", edad=31, funciones = nada}
@@ -55,8 +76,7 @@ zulu = Empleado {nombre="Zulu", edad=40, funciones = (funciones lima).aguaA90Gra
 lima :: Empleado
 lima = Empleado {nombre="Lima", edad=28, funciones = cambio2Llantas}
 
-operaciones::Empleado->Auto->Auto
-operaciones mecanico auto= (funciones mecanico) auto
+
 
 nada :: Auto -> Auto
 nada vehiculo= vehiculo
