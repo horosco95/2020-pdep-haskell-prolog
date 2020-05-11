@@ -26,20 +26,20 @@ calculoPatental patenteAuto | (('4'==).last) patenteAuto = ((3000*).length) pate
                             | otherwise = 20000
 
 --Punto 2
---parte 1 - (Integrante A)
+--parte 1 - (Gonzalo)
 
 esAutoPeligroso::Auto -> Bool
 esAutoPeligroso = (>0.5).head.desgasteLlantas
 
---parte 2 - (Integrante B)
+--parte 2 - (Hermes)
 necesitaRevision :: Auto -> Bool
 necesitaRevision = (<=2015).anio.ultimoArreglo
 --Punto 3
---parte 1 - (Integrante A)
+--parte 1 - (Gonzalo)
 
 
 
---parte 2 - (Integrante B)
+--parte 2 - (Hermes)
 data Empleado = Empleado {
  nombre :: String,
  edad :: Int,
