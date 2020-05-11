@@ -1,34 +1,51 @@
-vehiculo1 :: Auto
-vehiculo1 = Auto {
- patente = "AT001LN",
- desgasteLlantas= [0.5, 0.15, 0.31, 0.45] ,
- rpm = 2050,
- temperaturaAgua = 60,
- ultimoArreglo = (12,9,2016)
-}
+Ejemplos de invocacion y respuesta:
 
-vehiculo2 :: Auto
-vehiculo2 = Auto {
- patente = "DJV214",
- desgasteLlantas= [0.51, 0.23, 0.28, 0.33] ,
- rpm = 1850,
- temperaturaAgua = 80,
- ultimoArreglo = (12,9,2015)
-}
-vehiculo3 :: Auto
-vehiculo3 = Auto {
- patente = "DJV215",
- desgasteLlantas= [0.5, 0.44, 0.66, 0.6] ,
- rpm = 2230,
- temperaturaAgua = 98,
- ultimoArreglo = (12,9,2018)
-}
+-- Punto 1
+*Main> vehiculo1 = Auto { patente = "AT001LN", desgasteLlantas= [0.5, 0.1, 0.6, 0.4], rpm = 2050, temperaturaAgua = 60, ultimoArreglo = (12,9,2016)}
+*Main> costoReparacion vehiculo1 
+12500
 
-vehiculo4 :: Auto
-vehiculo4 = Auto {
- patente = "DFH029",
- desgasteLlantas= [0.51, 0.71, 0.6, 0.75] ,
- rpm = 1700,
- temperaturaAgua = 70,
- ultimoArreglo = (12,9,2014)
-}
+*Main> vehiculo2 = Auto { patente = "DJV214", desgasteLlantas= [0.51, 0.1, 0.6, 0.4], rpm = 1850, temperaturaAgua = 80, ultimoArreglo = (12,9,2015)}
+*Main> costoReparacion vehiculo2
+18000
+
+*Main> vehiculo3 = Auto { patente = "DJV215", desgasteLlantas= [0.69, 0.47, 0.55, 0.7] , rpm = 2230, temperaturaAgua = 98, ultimoArreglo = (12,9,2018)}
+*Main> costoReparacion vehiculo3
+20000
+
+*Main> vehiculo4 = Auto { patente = "DFH029", desgasteLlantas= [0.31, 0.71, 0.4, 0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
+*Main> costoReparacion vehiculo4
+15000
+
+-- Punto 2
+Parte 1:
+
+
+
+
+Parte 2:
+*Main> vehiculo1 = Auto { patente = "AT001LN", desgasteLlantas= [0.5, 0.1, 0.6, 0.4], rpm = 2050, temperaturaAgua = 60, ultimoArreglo = (12,9,2016)}
+*Main> necesitaRevision vehiculo1
+False
+
+*Main> vehiculo2 = Auto { patente = "DJV214", desgasteLlantas= [0.51, 0.1, 0.6, 0.4], rpm = 1850, temperaturaAgua = 80, ultimoArreglo = (12,9,2015)}
+*Main> necesitaRevision vehiculo2
+True
+
+-- Punto 3
+Parte 1:
+
+
+
+Parte 2:
+*Main> vehiculo3 = Auto { patente = "DJV215", desgasteLlantas= [0.69, 0.47, 0.55, 0.7] , rpm = 2230, temperaturaAgua = 98, ultimoArreglo = (12,9,2018)}
+*Main> operaciones tango vehiculo3
+Auto {patente = "DJV215", desgasteLlantas = [0.69,0.47,0.55,0.7], rpm = 2230, temperaturaAgua = 98, ultimoArreglo = (12,9,2018)}
+
+*Main> vehiculo4 = Auto { patente = "DFH029", desgasteLlantas= [0.31, 0.71, 0.4, 0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
+*Main> operaciones lima vehiculo4
+Auto {patente = "DFH029", desgasteLlantas = [0.0,0.0,0.4,0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
+
+*Main> vehiculo4 = Auto { patente = "DFH029", desgasteLlantas= [0.31, 0.71, 0.4, 0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
+*Main> operaciones zulu vehiculo4 
+Auto {patente = "DFH029", desgasteLlantas = [0.0,0.0,0.4,0.75], rpm = 1700, temperaturaAgua = 90, ultimoArreglo = (12,9,2014)}
