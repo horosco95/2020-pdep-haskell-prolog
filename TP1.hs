@@ -55,7 +55,7 @@ bravo :: Empleado
 bravo = Empleado {nombre="Bravo", edad=30, funciones = cambioLlantas}
 
 charly :: Empleado
-charly = empleado {nombre="Charly", edad=35, funciones = (funciones alfa).(funciones bravo)}
+charly = Empleado {nombre="Charly", edad=35, funciones = ((funciones alfa).(funciones bravo))}
 
 regularVueltas :: Auto -> Auto
 regularVueltas auto | (>2000) (rpm auto) = auto {rpm = 2000}
