@@ -19,9 +19,13 @@ Ejemplos de invocacion y respuesta:
 
 -- Punto 2
 Parte 1:
+*Main> vehiculo1 = Auto { patente = "AFK911", desgasteLlantas= [0.5, 0.5, 0.6, 0.8], rpm = 1500, temperaturaAgua = 90, ultimoArreglo = (12,2,2020)}
+*Main> esAutoPeligroso vehiculo1
+False
 
-
-
+*Main> vehiculo2 = Auto { patente = "AFK912", desgasteLlantas= [0.6, 0.5, 0.6, 0.8], rpm = 2700, temperaturaAgua = 90, ultimoArreglo = (12,2,2020)}
+*Main> esAutoPeligroso vehiculo2
+True
 
 Parte 2:
 *Main> vehiculo1 = Auto { patente = "AT001LN", desgasteLlantas= [0.5, 0.1, 0.6, 0.4], rpm = 2050, temperaturaAgua = 60, ultimoArreglo = (12,9,2016)}
@@ -34,18 +38,27 @@ True
 
 -- Punto 3
 Parte 1:
+*Main> vehiculo1 = Auto { patente = "ABC123", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
+*Main>operaciones alfa vehiculo1
+Auto {patente = "ABC123", desgasteLlantas = [0.5,0.34,0.89,0.24], rpm = 3400, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
 
+*Main> vehiculo2 = Auto { patente = "EFG456", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
+*Main> operaciones bravo vehiculo2
+Auto {patente = "EFG456", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
 
+*Main> vehiculo3 = Auto { patente = "HIJ789", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 4500, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
+*Main> operaciones charly vehiculo3
+Auto {patente = "HIJ789", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}}
 
 Parte 2:
-*Main> vehiculo3 = Auto { patente = "DJV215", desgasteLlantas= [0.69, 0.47, 0.55, 0.7] , rpm = 2230, temperaturaAgua = 98, ultimoArreglo = (12,9,2018)}
-*Main> operaciones tango vehiculo3
+*Main> vehiculo4 = Auto { patente = "DJV215", desgasteLlantas= [0.69, 0.47, 0.55, 0.7] , rpm = 2230, temperaturaAgua = 98, ultimoArreglo = (12,9,2018)}
+*Main> operaciones tango vehiculo4
 Auto {patente = "DJV215", desgasteLlantas = [0.69,0.47,0.55,0.7], rpm = 2230, temperaturaAgua = 98, ultimoArreglo = (12,9,2018)}
 
-*Main> vehiculo4 = Auto { patente = "DFH029", desgasteLlantas= [0.31, 0.71, 0.4, 0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
-*Main> operaciones lima vehiculo4
+*Main> vehiculo5 = Auto { patente = "DFH029", desgasteLlantas= [0.31, 0.71, 0.4, 0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
+*Main> operaciones lima vehiculo5
 Auto {patente = "DFH029", desgasteLlantas = [0.0,0.0,0.4,0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
 
-*Main> vehiculo4 = Auto { patente = "DFH029", desgasteLlantas= [0.31, 0.71, 0.4, 0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
+*Main> vehiculo6 = Auto {patente = "DFH029", desgasteLlantas= [0.31, 0.71, 0.4, 0.75], rpm = 1700, temperaturaAgua = 70, ultimoArreglo = (12,9,2014)}
 *Main> operaciones zulu vehiculo4 
 Auto {patente = "DFH029", desgasteLlantas = [0.0,0.0,0.4,0.75], rpm = 1700, temperaturaAgua = 90, ultimoArreglo = (12,9,2014)}
