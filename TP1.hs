@@ -17,12 +17,15 @@ data Auto = Auto {
 
 --Punto 1
 costoReparacion:: Auto -> Int
-costoReparacion auto | ((7==).length) (patente auto) = 12500
-                     | (("DJ"<=).take 2) (patente auto) && (("NB">=).take 2) (patente auto) = calculoPatental (patente auto)
+costoReparacion auto | esNuevaPatente.patente $ auto = 12500
+--costoReparacion auto | ((7==).length) (patente auto) = 12500
+                     | estaEntre "DJ" "NB" .patente $ auto = calculoPatental.patente $ auto
+--                     | (("DJ"<=).take 2) (patente auto) && (("NB">=).take 2) (patente auto) = calculoPatental (patente auto)
                      | otherwise = 15000
 
 calculoPatental::Patente->Int
-calculoPatental patenteAuto | (('4'==).last) patenteAuto = ((3000*).length) patenteAuto
+calculoPatental patenteAuto | terminaEn '4' patenteAuto = ((3000*).length) patenteAuto
+--calculoPatental patenteAuto | (('4'==).last) patenteAuto = ((3000*).length) patenteAuto
                             | otherwise = 20000
 
 --Punto 2
