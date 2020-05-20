@@ -66,20 +66,16 @@ cambioLlantas auto = auto {desgasteLlantas = (\[_,_,_,_]->[0,0,0,0]) (desgasteLl
 
 
 --parte 2 - (Hermes)
+type Mecanico = Auto -> Auto
+tango :: Mecanico
+tango vehiculo = vehiculo
 
-tango :: Empleado
-tango = Empleado {nombre="Tango", edad=31, funciones = nada}
+zulu :: Mecanico
+zulu  = lima.aguaA90Grados
 
-zulu :: Empleado
-zulu = Empleado {nombre="Zulu", edad=40, funciones = (funciones lima).aguaA90Grados}
+lima :: Mecanico
+lima  = cambio2Llantas
 
-lima :: Empleado
-lima = Empleado {nombre="Lima", edad=28, funciones = cambio2Llantas}
-
-
-
-nada :: Auto -> Auto
-nada vehiculo= vehiculo
 aguaA90Grados :: Auto -> Auto
 aguaA90Grados vehiculo = vehiculo {temperaturaAgua = 90}
 cambio2Llantas :: Auto -> Auto
