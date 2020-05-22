@@ -62,7 +62,7 @@ estaEnOrden (x:[]) = evaluarDesgasteSegun odd.desgasteLlantas $  x
 estaEnOrden (x:y:xs) = (evaluarDesgasteSegun odd.desgasteLlantas $ x)  && (evaluarDesgasteSegun even.desgasteLlantas $ y) && (estaEnOrden xs)  
 
 evaluarDesgasteSegun :: (Int -> Bool) -> [Desgaste] -> Bool
-evaluarDesgasteSegun condicion listaAuto = condicion.sumaDesgaste $ listaAuto
+evaluarDesgasteSegun condicion desgasteAuto = condicion.sumaDesgaste $ desgasteAuto
 
 sumaDesgaste :: [Desgaste] -> Int
 sumaDesgaste = round.(10*).sum
