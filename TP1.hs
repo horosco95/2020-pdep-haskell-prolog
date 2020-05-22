@@ -16,17 +16,22 @@ data Auto = Auto {
 } deriving Show
 
 --Punto 1
-costoReparacion:: Auto -> Int
-costoReparacion auto | esNuevaPatente.patente $ auto = 12500
---costoReparacion auto | ((7==).length) (patente auto) = 12500
-                     | estaEntre "DJ" "NB" .patente $ auto = calculoPatental.patente $ auto
---                     | (("DJ"<=).take 2) (patente auto) && (("NB">=).take 2) (patente auto) = calculoPatental (patente auto)
+costoReparacion :: Auto -> Int
+costoReparacion auto | esPatenteNueva.patente $ auto = 12500
+                     | estaEntre "DJ" "NB" . patente $ auto = calculoPatental.patente $ auto
                      | otherwise = 15000
 
-calculoPatental::Patente->Int
+estaEntre :: Patente -> Patente -> Patente -> Bool
+estaEntre cotaInf cotaSup unaPatente = ((cotaInf<=).take 2) unaPatente && ((cotaSup>=).take 2) unaPatente
+
+esPatenteNueva :: Patente -> Bool
+esPatenteNueva  = (==7).length
+
+calculoPatental :: Patente->Int
 calculoPatental patenteAuto | terminaEn '4' patenteAuto = ((3000*).length) patenteAuto
---calculoPatental patenteAuto | (('4'==).last) patenteAuto = ((3000*).length) patenteAuto
                             | otherwise = 20000
+terminaEn ::  Char -> Patente -> Bool
+terminaEn caracter = (caracter==).last
 
 --Punto 2
 --parte 1 - (Gonzalo)

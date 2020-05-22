@@ -55,6 +55,20 @@ cambio2Llantas vehiculo = vehiculo {desgasteLlantas = (\[_,_,c,d]->[0,0,c,d]) (d
 
 --Punto 4
 
+estaEnOrden :: [Auto] -> Bool
+
+estaEnOrden [] = True
+estaEnOrden [x] = sumaImpar x
+estaEnOrden (x:y:xs) = (sumaImpar.desgasteLlantas $ x)  && (sumaPar.desgasteLlantas $ y) && (estaEnOrden xs)  
+
+sumaPar :: Integer -> Bool
+sumarPar = even sumaDesgaste
+
+sumaImpar :: Integer -> Bool
+sumaImpar = odd sumaDesgaste
+
+sumaDesgaste :: [Float] -> Integer
+sumaDesgaste = (10*.sum) desgasteLlantas
 
 
 --Punto 5
