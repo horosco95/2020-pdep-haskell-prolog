@@ -32,6 +32,12 @@ calculoPatental patenteAuto | terminaEn '4' patenteAuto = ((3000*).length) paten
 terminaEn ::  Char -> Patente -> Bool
 terminaEn caracter = (caracter==).last
 
+esAutoPeligroso::Auto -> Bool
+esAutoPeligroso = (>0.5).head.desgasteLlantas
+
+necesitaRevision :: Auto -> Bool
+necesitaRevision = (<=2015).anio.ultimoArreglo
+
 type Mecanico = Auto -> Auto
 tango :: Mecanico
 tango vehiculo = vehiculo
@@ -46,3 +52,25 @@ aguaA90Grados :: Auto -> Auto
 aguaA90Grados vehiculo = vehiculo {temperaturaAgua = 90}
 cambio2Llantas :: Auto -> Auto
 cambio2Llantas vehiculo = vehiculo {desgasteLlantas = (\[_,_,c,d]->[0,0,c,d]) (desgasteLlantas vehiculo)}
+
+--Punto 4
+
+
+
+--Punto 5
+
+
+
+--Punto 6
+--parte 1 - Integrante a
+
+
+
+--parte 2 - Integrante b
+
+
+--Punto 7
+--parte 1 - Integrante a
+
+
+--parte 2 - Integrante b
