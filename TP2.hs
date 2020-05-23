@@ -80,6 +80,20 @@ sumaDesgaste = round.(10*).sum
 
 
 --Punto 7
+tecnicosInfinitos :: [Mecanico]
+tecnicosInfinitos = zulu:tecnicosInfinitos
+
+autosInfinitos :: [Auto]
+autosInfinitos = autosInfinitos' 0
+
+autosInfinitos' :: Float -> [Auto]
+autosInfinitos' n = Auto {
+ patente = "AAA000",
+ desgasteLlantas = [n, 0, 0, 0.3],
+ rpm = 1500 + round n,
+ temperaturaAgua = 90,
+ ultimoArreglo = (20, 1, 2013)
+} : autosInfinitos' (n + 1)
 --parte 1 - Integrante a
 
 
