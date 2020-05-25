@@ -90,7 +90,7 @@ sumaDesgaste = round.(10*).sum
 --parte 1 - Integrante a
 
 mecanicosQueDejanAutoEnCondiciones :: Auto -> [Mecanico] -> Int
-mecanicosQueDejanAutoEnCondiciones coche  listaMecanicos =  (length.(filtrarMecanicos coche)) listaMecanicos
+mecanicosQueDejanAutoEnCondiciones coche  listaMecanicos =  length.(filtrarMecanicos coche) $ listaMecanicos
 
 filtrarMecanicos :: Auto -> [Mecanico] -> [Mecanico]
 filtrarMecanicos coche listaMecanicos = filter (\unElem -> not.esAutoPeligroso.unElem $ coche) listaMecanicos
@@ -123,6 +123,7 @@ autosInfinitos' n = Auto {
 } : autosInfinitos' (n + 1)
 --parte 1 - Integrante a
 
+mecanicosQueDejanAutoEnCondicionesPrimero coche listaAutos = head.(filtrarMecanicos coche) $ listaAutos
 
 --parte 2 - Integrante b
 
