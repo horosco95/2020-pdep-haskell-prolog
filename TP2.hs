@@ -39,6 +39,21 @@ necesitaRevision :: Auto -> Bool
 necesitaRevision = (<=2015).anio.ultimoArreglo
 
 type Mecanico = Auto -> Auto
+alfa :: Mecanico
+alfa = regularVueltas
+
+bravo :: Mecanico
+bravo = cambioLlantas
+
+charly :: Mecanico
+charly = alfa.bravo
+
+regularVueltas :: Auto -> Auto
+regularVueltas auto | (>2000) (rpm auto) = auto {rpm = 2000}
+                    | otherwise = auto
+cambioLlantas :: Auto -> Auto
+cambioLlantas auto = auto {desgasteLlantas = (\[_,_,_,_]->[0,0,0,0]) (desgasteLlantas auto)}
+
 tango :: Mecanico
 tango vehiculo = vehiculo
 
