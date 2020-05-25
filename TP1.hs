@@ -45,18 +45,11 @@ necesitaRevision = (<=2015).anio.ultimoArreglo
 
 
 --Punto 3
-data Empleado = Empleado {
- nombre :: String,
- edad :: Int,
- funciones::(Auto->Auto)
-} deriving Show
 
-operaciones::Empleado->Auto->Auto
-operaciones mecanico auto= (funciones mecanico) auto
-
---parte 1 - (Gonzalo)
 type Mecanico = Auto -> Auto
 
+
+--parte 1 - (Gonzalo)
 alfa :: Mecanico
 alfa = regularVueltas
 
