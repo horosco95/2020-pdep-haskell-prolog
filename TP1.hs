@@ -55,15 +55,16 @@ operaciones::Empleado->Auto->Auto
 operaciones mecanico auto= (funciones mecanico) auto
 
 --parte 1 - (Gonzalo)
+type Mecanico = Auto -> Auto
 
-alfa :: Empleado
-alfa = Empleado {nombre="Alfa", edad=28, funciones = regularVueltas}
+alfa :: Mecanico
+alfa = regularVueltas
 
-bravo :: Empleado
-bravo = Empleado {nombre="Bravo", edad=30, funciones = cambioLlantas}
+bravo :: Mecanico
+bravo = cambioLlantas
 
-charly :: Empleado
-charly = Empleado {nombre="Charly", edad=35, funciones = ((funciones alfa).(funciones bravo))}
+charly :: Mecanico
+charly = alfa.bravo
 
 regularVueltas :: Auto -> Auto
 regularVueltas auto | (>2000) (rpm auto) = auto {rpm = 2000}
@@ -74,7 +75,6 @@ cambioLlantas auto = auto {desgasteLlantas = (\[_,_,_,_]->[0,0,0,0]) (desgasteLl
 
 
 --parte 2 - (Hermes)
-type Mecanico = Auto -> Auto
 tango :: Mecanico
 tango vehiculo = vehiculo
 
