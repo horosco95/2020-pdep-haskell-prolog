@@ -91,7 +91,7 @@ actualizarFecha :: Fecha -> Auto -> Auto
 actualizarFecha unaFecha unAuto= unAuto {ultimoArreglo = unaFecha} 
 
 --Punto 6
---parte 1 - Integrante a
+--parte 1 - Gonzalo
 
 mecanicosQueDejanAutoEnCondiciones :: Auto -> [Mecanico] -> Int
 mecanicosQueDejanAutoEnCondiciones coche  listaMecanicos =  length.(filtrarMecanicos coche) $ listaMecanicos
@@ -99,7 +99,7 @@ mecanicosQueDejanAutoEnCondiciones coche  listaMecanicos =  length.(filtrarMecan
 filtrarMecanicos :: Auto -> [Mecanico] -> [Mecanico]
 filtrarMecanicos coche listaMecanicos = filter (\unElem -> not.esAutoPeligroso.unElem $ coche) listaMecanicos
 
---parte 2 - Integrante b
+--parte 2 - Hermes
 
 costoReparacionAutosConRevision :: [Auto] -> Int
 costoReparacionAutosConRevision listaAutos = sumarCostoReparacionPorAuto.filtrarAutosNecesitenRevision $ listaAutos
@@ -125,10 +125,10 @@ autosInfinitos' n = Auto {
  temperaturaAgua = 90,
  ultimoArreglo = (20, 1, 2013)
 } : autosInfinitos' (n + 1)
---parte 1 - Integrante a
+--parte 1 - Gonzalo
 
 mecanicosQueDejanAutoEnCondicionesPrimero coche listaAutos = head.(filtrarMecanicos coche) $ listaAutos
 
---parte 2 - Integrante b
+--parte 2 - Hermes
 
-costoReparacionAutosConRevisionPrimerosN n listaAutos = sumarCostoReparacionPorAuto.take n.filtrarAutosNecesitenRevision $ listaAutos
+costoReparacionAutosConRevisionPrimeros3 listaAutos = sumarCostoReparacionPorAuto.take 3.filtrarAutosNecesitenRevision $ listaAutos
