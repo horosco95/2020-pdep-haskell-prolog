@@ -58,18 +58,14 @@ cambio2Llantas vehiculo = vehiculo {desgasteLlantas = (\[_,_,c,d]->[0,0,c,d]) (d
 estaEnOrden :: [Auto] -> Bool
 
 estaEnOrden [] = True
-estaEnOrden [x] = sumaImpar x
-estaEnOrden (x:y:xs) = (sumaImpar.desgasteLlantas $ x)  && (sumaPar.desgasteLlantas $ y) && (estaEnOrden xs)  
+estaEnOrden (x:[]) = evaluarDesgasteSegun odd.desgasteLlantas $  x
+estaEnOrden (x:y:xs) = (evaluarDesgasteSegun odd.desgasteLlantas $ x)  && (evaluarDesgasteSegun even.desgasteLlantas $ y) && (estaEnOrden xs)  
 
-sumaPar :: Integer -> Bool
-sumarPar = even sumaDesgaste
+evaluarDesgasteSegun :: (Int -> Bool) -> [Desgaste] -> Bool
+evaluarDesgasteSegun condicion desgasteAuto = condicion.sumaDesgaste $ desgasteAuto
 
-sumaImpar :: Integer -> Bool
-sumaImpar = odd sumaDesgaste
-
-sumaDesgaste :: [Float] -> Integer
-sumaDesgaste = (10*.sum) desgasteLlantas
-
+sumaDesgaste :: [Desgaste] -> Int
+sumaDesgaste = round.(10*).sum
 
 --Punto 5
 
@@ -84,6 +80,20 @@ sumaDesgaste = (10*.sum) desgasteLlantas
 
 
 --Punto 7
+tecnicosInfinitos :: [Mecanico]
+tecnicosInfinitos = zulu:tecnicosInfinitos
+
+autosInfinitos :: [Auto]
+autosInfinitos = autosInfinitos' 0
+
+autosInfinitos' :: Float -> [Auto]
+autosInfinitos' n = Auto {
+ patente = "AAA000",
+ desgasteLlantas = [n, 0, 0, 0.3],
+ rpm = 1500 + round n,
+ temperaturaAgua = 90,
+ ultimoArreglo = (20, 1, 2013)
+} : autosInfinitos' (n + 1)
 --parte 1 - Integrante a
 
 
