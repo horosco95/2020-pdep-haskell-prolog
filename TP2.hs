@@ -93,6 +93,14 @@ sumaDesgaste = round.(10*).sum
 
 --parte 2 - Integrante b
 
+costoReparacionAutosConRevision :: [Auto] -> Int
+costoReparacionAutosConRevision listaAutos = sumarCostoReparacionPorAuto.filtrarAutosNecesitenRevision $ listaAutos
+
+sumarCostoReparacionPorAuto :: [Auto] -> Int
+sumarCostoReparacionPorAuto = sum.map costoReparacion
+
+filtrarAutosNecesitenRevision :: [Auto] -> [Auto]
+filtrarAutosNecesitenRevision = filter (necesitaRevision)
 
 --Punto 7
 tecnicosInfinitos :: [Mecanico]
@@ -113,3 +121,5 @@ autosInfinitos' n = Auto {
 
 
 --parte 2 - Integrante b
+
+costoReparacionAutosConRevisionPrimerosN n listaAutos = sumarCostoReparacionPorAuto.take n.filtrarAutosNecesitenRevision $ listaAutos
