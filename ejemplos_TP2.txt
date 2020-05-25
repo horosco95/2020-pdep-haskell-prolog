@@ -30,9 +30,30 @@ Parte 1
 
 Parte 2
 
+auto9 = Auto { patente = "AT001LN", desgasteLlantas= [0.51, 0.25, 0.21, 0.12] , rpm = 2150, temperaturaAgua = 90, ultimoArreglo = (11,11,2014)}
+auto10 = Auto { patente = "DJV215", desgasteLlantas= [0.61, 0.13, 0.11, 0.78] , rpm = 1858, temperaturaAgua = 99, ultimoArreglo = (19,1,2018)}
+auto11 = Auto { patente = "DJV214", desgasteLlantas= [0.21, 0.35, 0.16, 0.32] , rpm = 1959, temperaturaAgua = 50, ultimoArreglo = (22,8,2017)}
+auto12 = Auto { patente = "DFH029", desgasteLlantas= [0.80, 0.45, 0.19, 0.29] , rpm = 2112, temperaturaAgua = 88, ultimoArreglo = (30,9,2015)}
+
+*Main> costoReparacionAutosConRevision [auto9,auto10,auto11,auto12]
+27500
 
 --Punto 7
 Parte 1
 
 
 Parte 2
+Si tengo una lista infinita de autos, aplicando:
+*Main> costoReparacionAutosConRevision autosInfinitos
+Como parametro acepta "autosInfinitos", el problema es que no termina de calcular.
+Esto ocurre debido a que como la lista de autos es infinito, antes se tiene que completar una operacion sobre esa lista infinita,
+entonces nunca se va a poder realizar porque la funcion que interactua primero con la lista nunca va a terminar (en este caso
+filtrarAutosNecesitenRevision)
+
+Entonces para contar los primeros 3 elementos de la lista de autos:
+*Main> costoReparacionAutosConRevisionPrimeros3 autosInfinitos
+45000
+En esta version de la funcion, si admite lista de autos infinitos y me devuelve el costo.
+Esto ocurre porque toma los primeros 3 elementos de la lista que pasan el filtro. Cuando la lista filtrada llega a tener longitud 3,
+se aplica la funcion "take 3.filtrarAutosNecesitenRevision" a autosInfinitos y el resultado se aplica con la funcion sumarCostoReparacionPorAuto
+dando como resultado: 45000.
