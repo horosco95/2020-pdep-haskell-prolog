@@ -84,7 +84,11 @@ sumaDesgaste = round.(10*).sum
 
 --Punto 5
 
+ordenReparacion :: Fecha -> [Mecanico] -> Auto -> Auto
+ordenReparacion unaFecha listaTecnicos unAuto= (actualizarFecha unaFecha) (foldl (flip ($)) unAuto listaTecnicos)
 
+actualizarFecha :: Fecha -> Auto -> Auto
+actualizarFecha unaFecha unAuto= unAuto {ultimoArreglo = unaFecha} 
 
 --Punto 6
 --parte 1 - Integrante a
