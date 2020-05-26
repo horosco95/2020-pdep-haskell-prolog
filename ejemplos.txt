@@ -40,7 +40,7 @@ True
 Parte 1:
 *Main> vehiculo1 = Auto { patente = "ABC123", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
 *Main> alfa vehiculo1
-Auto {patente = "ABC123", desgasteLlantas = [0.5,0.34,0.89,0.24], rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
+Auto {patente = "ABC123", desgasteLlantas = [0.5,0.34,0.89,0.24], rpm = 2000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
 
 *Main> vehiculo2 = Auto { patente = "EFG456", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
 *Main> bravo vehiculo2
