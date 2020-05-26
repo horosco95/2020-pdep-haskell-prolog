@@ -127,7 +127,7 @@ autosInfinitos' n = Auto {
 } : autosInfinitos' (n + 1)
 --parte 1 - Gonzalo
 
-mecanicosQueDejanAutoEnCondicionesPrimero coche listaAutos = head.(filtrarMecanicos coche) $ listaAutos
+mecanicosQueDejanAutoEnCondicionesPrimero coche listaMecanicos = head.(filtrarMecanicos coche) $ listaMecanicos
 
 --parte 2 - Hermes
 
