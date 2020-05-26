@@ -22,7 +22,13 @@ auto8 = Auto { patente = "AP002TM", desgasteLlantas= [0.1,0.4,0.2,0.1], rpm = 20
 False
 
 --Punto 5
+vehiculo1 = Auto { patente = "ABC123", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2009)}
+*Main> ordenReparacion (19,2,2019) [alfa,bravo,tango] vehiculo1
+Auto {patente = "ABC123", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 50, ultimoArreglo = (19,2,2019)}
 
+vehiculo2 = Auto { patente = "EFG456", desgasteLlantas= [0.5, 0.66, 0.89, 0.24] , rpm = 2950, temperaturaAgua = 99, ultimoArreglo = (12,1,2020)}
+*Main> ordenReparacion (29,3,2020) [zulu,charly,alfa,lima] vehiculo2
+Auto {patente = "EFG456", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 90, ultimoArreglo = (29,3,2020)}
 
 --Punto 6
 Parte 1
