@@ -54,6 +54,6 @@ Entonces para contar los primeros 3 elementos de la lista de autos:
 *Main> costoReparacionAutosConRevisionPrimeros3 autosInfinitos
 45000
 En esta version de la funcion, si admite lista de autos infinitos y me devuelve el costo.
-Esto ocurre porque toma los primeros 3 elementos de la lista que pasan el filtro. Cuando la lista filtrada llega a tener longitud 3,
-se aplica la funcion "take 3.filtrarAutosNecesitenRevision" a autosInfinitos y el resultado se aplica con la funcion sumarCostoReparacionPorAuto
+Esto ocurre porque toma los primeros 3 elementos de la lista que pasan el filtro. Cuando "autosInfinitos" llega a tener longitud 3,
+se le aplica la funcion "take 3.filtrarAutosNecesitenRevision" y al resultado se le aplica la funcion sumarCostoReparacionPorAuto
 dando como resultado: 45000.
