@@ -39,15 +39,15 @@ True
 -- Punto 3
 Parte 1:
 *Main> vehiculo1 = Auto { patente = "ABC123", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
-*Main>operaciones alfa vehiculo1
+*Main> alfa vehiculo1
 Auto {patente = "ABC123", desgasteLlantas = [0.5,0.34,0.89,0.24], rpm = 3400, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
 
 *Main> vehiculo2 = Auto { patente = "EFG456", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
-*Main> operaciones bravo vehiculo2
+*Main> bravo vehiculo2
 Auto {patente = "EFG456", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
 
 *Main> vehiculo3 = Auto { patente = "HIJ789", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 4500, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}
-*Main> operaciones charly vehiculo3
+*Main> charly vehiculo3
 Auto {patente = "HIJ789", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 50, ultimoArreglo = (12,1,2020)}}
 
 Parte 2:
