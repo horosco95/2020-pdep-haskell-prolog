@@ -71,13 +71,15 @@ cambio2Llantas vehiculo = vehiculo {desgasteLlantas = (\[_,_,c,d]->[0,0,c,d]) (d
 --Punto 4
 
 estaEnOrden :: [Auto] -> Bool
+estaEnOrden [] = False
+estaEnOrden [unAuto] = tieneDesgasteImpar.desgasteLlantas $  unAuto
+estaEnOrden (unAuto:otroAuto:autos) = (tieneDesgasteImpar.desgasteLlantas $ unAuto)  && (tieneDesgastePar.desgasteLlantas $ otroAuto) && (estaEnOrden autos)  
 
-estaEnOrden [] = True
-estaEnOrden (x:[]) = evaluarDesgasteSegun odd.desgasteLlantas $  x
-estaEnOrden (x:y:xs) = (evaluarDesgasteSegun odd.desgasteLlantas $ x)  && (evaluarDesgasteSegun even.desgasteLlantas $ y) && (estaEnOrden xs)  
+tieneDesgastePar :: [Desgaste] -> Bool
+tieneDesgastePar desgasteAuto = even.sumaDesgaste $ desgasteAuto
 
-evaluarDesgasteSegun :: (Int -> Bool) -> [Desgaste] -> Bool
-evaluarDesgasteSegun condicion desgasteAuto = condicion.sumaDesgaste $ desgasteAuto
+tieneDesgasteImpar :: [Desgaste] -> Bool
+tieneDesgasteImpar desgasteAuto = odd.sumaDesgaste $ desgasteAuto
 
 sumaDesgaste :: [Desgaste] -> Int
 sumaDesgaste = round.(10*).sum
@@ -131,4 +133,5 @@ mecanicosQueDejanAutoEnCondicionesPrimero coche listaMecanicos = head.(filtrarMe
 
 --parte 2 - Hermes
 
+costoReparacionAutosConRevisionPrimeros3 :: [Auto] -> Int
 costoReparacionAutosConRevisionPrimeros3 listaAutos = sumarCostoReparacionPorAuto.take 3.filtrarAutosNecesitenRevision $ listaAutos
