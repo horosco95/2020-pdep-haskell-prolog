@@ -60,15 +60,14 @@ dara finalización jamás, dado a que no terminará de aplicar la accion de los 
 Parte 2
 Si tengo una lista infinita de autos, aplicando:
 *Main> costoReparacionAutosConRevision autosInfinitos
-Como parametro acepta "autosInfinitos", el problema es que no termina de calcular.
-Esto ocurre debido a que como la lista de autos es infinito, antes se tiene que completar una operacion sobre esa lista infinita,
-entonces nunca se va a poder realizar porque la funcion que interactua primero con la lista nunca va a terminar (en este caso
-filtrarAutosNecesitenRevision)
+....No termina de ejecutar....
+Como parametro acepta "autosInfinitos", el problema es que no termina de calcular el costo de reparacion total de la lista cuyos autos necesiten revision. 
+Esto ocurre debido a que como la lista de autos se genera de forma recursiva, la funcion costoReparacionAutosConRevision, que espera una lista y
+devuelve el costo, va tomar como parametro todos los elementos de esa lista, que no tiene un caso base que corte la recursividad.
 
 Entonces para contar los primeros 3 elementos de la lista de autos:
 *Main> costoReparacionAutosConRevisionPrimeros3 autosInfinitos
 45000
 En esta version de la funcion, si admite lista de autos infinitos y me devuelve el costo.
-Esto ocurre porque toma los primeros 3 elementos de la lista que pasan el filtro. Cuando "autosInfinitos" llega a tener longitud 3,
-se le aplica la funcion "take 3.filtrarAutosNecesitenRevision" y al resultado se le aplica la funcion sumarCostoReparacionPorAuto
-dando como resultado: 45000.
+Gracias a la evaluacion diferida, como la lista se genera en forma recursiva, si se aplica la nueva funcion esta espera hasta cuando la necesite
+aplicar, en este caso cuando la lista tenga 3 elementos.
