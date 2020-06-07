@@ -122,8 +122,8 @@ actualizarFecha unaFecha unAuto= unAuto {ultimoArreglo = unaFecha}
 --Punto 6
 --parte 1 - Gonzalo
 
-mecanicosQueDejanAutoEnCondiciones :: Auto -> [Mecanico] -> Int
-mecanicosQueDejanAutoEnCondiciones coche  listaMecanicos =  length.(filtrarMecanicos coche) $ listaMecanicos
+mecanicosQueDejanAutoEnCondiciones :: Auto -> [Mecanico] -> [Mecanico]
+mecanicosQueDejanAutoEnCondiciones coche  listaMecanicos =  (filtrarMecanicos coche) $ listaMecanicos
 
 filtrarMecanicos :: Auto -> [Mecanico] -> [Mecanico]
 filtrarMecanicos coche listaMecanicos = filter (\unElem -> not.esAutoPeligroso.unElem $ coche) listaMecanicos
