@@ -68,7 +68,7 @@ aguaA90Grados vehiculo = vehiculo {temperaturaAgua = 90}
 cambio2Llantas :: Auto -> Auto
 cambio2Llantas vehiculo = vehiculo {desgasteLlantas = (\[_,_,c,d]->[0,0,c,d]) (desgasteLlantas vehiculo)}
 
---Punto 4
+--Punto 4  - forma 1
 
 estaEnOrden :: [Auto] -> Bool
 estaEnOrden [] = False
@@ -76,22 +76,42 @@ estaEnOrden [unAuto] = tieneDesgasteImpar.desgasteLlantas $  unAuto
 estaEnOrden (unAuto:otroAuto:autos) = (tieneDesgasteImpar.desgasteLlantas $ unAuto)  && (tieneDesgastePar.desgasteLlantas $ otroAuto) && (estaEnOrden autos)  
 
 tieneDesgastePar :: [Desgaste] -> Bool
-tieneDesgastePar desgasteAuto = even.sumaDesgaste $ desgasteAuto
+tieneDesgastePar desgasteAuto = even.calcularDesgaste $ desgasteAuto
 
 tieneDesgasteImpar :: [Desgaste] -> Bool
-tieneDesgasteImpar desgasteAuto = odd.sumaDesgaste $ desgasteAuto
+tieneDesgasteImpar desgasteAuto = odd.calcularDesgaste $ desgasteAuto
 
-sumaDesgaste :: [Desgaste] -> Int
-sumaDesgaste = round.(10*).sum
+calcularDesgaste :: [Desgaste] -> Int
+calcularDesgaste = round.(10*).sum
+
+--Punto 4  - forma 2
+estaEnOrden' :: [Auto] -> Bool
+estaEnOrden' autos =not . elem False . map evaluarDesgasteSegunPosicion . ordenarAutosSegunPosicion $ autos
+
+ordenarAutosSegunPosicion :: [Auto] -> [(Int, Auto)]
+ordenarAutosSegunPosicion autos = zip [1..] autos
+
+evaluarDesgasteSegunPosicion :: (Int, Auto) -> Bool
+evaluarDesgasteSegunPosicion (pos,auto) | estaEnPosicionPar (pos,auto) = tieneDesgastePar.desgasteLlantas $ auto
+                                        | estaEnPosicionImpar (pos,auto) = tieneDesgasteImpar.desgasteLlantas $ auto
+
+estaEnPosicionPar :: (Int, Auto) -> Bool
+estaEnPosicionPar (pos,_)= even pos
+
+estaEnPosicionImpar :: (Int, Auto) -> Bool
+estaEnPosicionImpar = not.estaEnPosicionPar
 
 --Punto 5
 
 aplicarOrdenReparacion :: OrdenReparacion -> Auto -> Auto
-aplicarOrdenReparacion (fecha,tecnicos) auto = actualizarFecha fecha . reparaciones tecnicos $ auto
+aplicarOrdenReparacion unaOrden auto = actualizarFecha (fecha unaOrden) . reparaciones (tecnicos unaOrden) $ auto
 
-type OrdenReparacion = (Fecha,[Mecanico])
-ordenReparacion :: Fecha -> [Mecanico] -> OrdenReparacion
-ordenReparacion unaFecha listaTecnicos = (unaFecha,listaTecnicos)
+data OrdenReparacion = UnaOrdenReparacion {
+  fecha :: Fecha,
+  tecnicos :: [Mecanico]
+} deriving Show
+prepararOrdenReparacion :: Fecha -> [Mecanico] -> OrdenReparacion
+prepararOrdenReparacion unaFecha listaTecnicos = UnaOrdenReparacion {fecha=unaFecha,tecnicos=listaTecnicos}
 
 reparaciones :: [Mecanico] -> Auto -> Auto
 reparaciones tecnicos auto = foldl (flip ($)) auto tecnicos
