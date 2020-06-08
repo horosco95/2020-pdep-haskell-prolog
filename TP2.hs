@@ -68,38 +68,25 @@ aguaA90Grados vehiculo = vehiculo {temperaturaAgua = 90}
 cambio2Llantas :: Auto -> Auto
 cambio2Llantas vehiculo = vehiculo {desgasteLlantas = (\[_,_,c,d]->[0,0,c,d]) (desgasteLlantas vehiculo)}
 
---Punto 4  - forma 1
-
-estaEnOrden :: [Auto] -> Bool
-estaEnOrden [] = False
-estaEnOrden [unAuto] = tieneDesgasteImpar.desgasteLlantas $  unAuto
-estaEnOrden (unAuto:otroAuto:autos) = (tieneDesgasteImpar.desgasteLlantas $ unAuto)  && (tieneDesgastePar.desgasteLlantas $ otroAuto) && (estaEnOrden autos)  
-
-tieneDesgastePar :: [Desgaste] -> Bool
-tieneDesgastePar desgasteAuto = even.calcularDesgaste $ desgasteAuto
-
-tieneDesgasteImpar :: [Desgaste] -> Bool
-tieneDesgasteImpar desgasteAuto = odd.calcularDesgaste $ desgasteAuto
-
-calcularDesgaste :: [Desgaste] -> Int
-calcularDesgaste = round.(10*).sum
-
---Punto 4  - forma 2
-estaEnOrden' :: [Auto] -> Bool
-estaEnOrden' autos =not . elem False . map evaluarDesgasteSegunPosicion . ordenarAutosSegunPosicion $ autos
+--Punto 4
+estanOrdenadosPorDesgaste :: [Auto] -> Bool
+estanOrdenadosPorDesgaste  autos = all ordenadosDesgasteParOImpar . ordenarAutosSegunPosicion $ autos
 
 ordenarAutosSegunPosicion :: [Auto] -> [(Int, Auto)]
 ordenarAutosSegunPosicion autos = zip [1..] autos
 
-evaluarDesgasteSegunPosicion :: (Int, Auto) -> Bool
-evaluarDesgasteSegunPosicion (pos,auto) | estaEnPosicionPar (pos,auto) = tieneDesgastePar.desgasteLlantas $ auto
-                                        | estaEnPosicionImpar (pos,auto) = tieneDesgasteImpar.desgasteLlantas $ auto
+ordenadosDesgasteParOImpar :: (Int, Auto) -> Bool
+ordenadosDesgasteParOImpar (pos,auto) | estaEnPosicionPar (pos,auto) = (tieneDesgaste even) . desgasteLlantas $ auto
+                                      | otherwise = (tieneDesgaste odd) . desgasteLlantas $ auto
 
 estaEnPosicionPar :: (Int, Auto) -> Bool
 estaEnPosicionPar (pos,_)= even pos
 
-estaEnPosicionImpar :: (Int, Auto) -> Bool
-estaEnPosicionImpar = not.estaEnPosicionPar
+tieneDesgaste :: (Int -> Bool) -> [Desgaste] -> Bool
+tieneDesgaste condicion desgasteAuto = condicion.calcularDesgaste $ desgasteAuto
+
+calcularDesgaste :: [Desgaste] -> Int
+calcularDesgaste = round.(10*).sum
 
 --Punto 5
 
