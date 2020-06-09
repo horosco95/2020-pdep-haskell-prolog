@@ -36,7 +36,7 @@ Parte 1
 auto9a = Auto { patente = "BT001LF", desgasteLlantas= [0.51, 0.25, 0.21, 0.12] , rpm = 2150, temperaturaAgua = 80, ultimoArreglo = (13,9,2016)}
 
 *Main> mecanicosQueDejanAutoEnCondiciones auto9a [alfa,bravo,charly,alfa]
-2
+[<function>,<function>]
 
 Parte 2
 

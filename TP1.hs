@@ -22,10 +22,13 @@ costoReparacion auto | esPatenteNueva.patente $ auto = 12500
                      | otherwise = 15000
 
 estaEntre :: Patente -> Patente -> Patente -> Bool
-estaEntre cotaInf cotaSup unaPatente = ((cotaInf<=).take 2) unaPatente && ((cotaSup>=).take 2) unaPatente
+estaEntre cotaInf cotaSup unaPatente = ((cotaInf<=).dosPrimerosPatente) unaPatente && ((cotaSup>=).dosPrimerosPatente) unaPatente
 
 esPatenteNueva :: Patente -> Bool
 esPatenteNueva  = (==7).length
+
+dosPrimerosPatente :: Patente -> String
+dosPrimerosPatente patente = take 2 patente
 
 calculoPatental :: Patente->Int
 calculoPatental patenteAuto | terminaEn '4' patenteAuto = ((3000*).length) patenteAuto
@@ -60,11 +63,10 @@ charly :: Mecanico
 charly = alfa.bravo
 
 regularVueltas :: Auto -> Auto
-regularVueltas auto | (>2000) (rpm auto) = auto {rpm = 2000}
-                    | otherwise = auto
+regularVueltas auto = auto {rpm = min 2000 (rpm auto)}                      
 
 cambioLlantas :: Auto -> Auto
-cambioLlantas auto = auto {desgasteLlantas = (\[_,_,_,_]->[0,0,0,0]) (desgasteLlantas auto)}
+cambioLlantas auto = auto {desgasteLlantas = (\[_,_,_,_]-> replicate 4 0) (desgasteLlantas auto)}
 
 
 --parte 2 - (Hermes)
