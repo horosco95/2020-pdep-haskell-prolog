@@ -23,11 +23,13 @@ False
 
 --Punto 5
 vehiculo1 = Auto { patente = "ABC123", desgasteLlantas= [0.5, 0.34, 0.89, 0.24] , rpm = 3000, temperaturaAgua = 50, ultimoArreglo = (12,1,2009)}
-*Main> ordenReparacion (19,2,2019) [alfa,bravo,tango] vehiculo1
+orden1 = prepararOrdenReparacion (19,2,2019) [alfa,bravo,tango]
+*Main> aplicarOrdenReparacion orden1 vehiculo1
 Auto {patente = "ABC123", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 50, ultimoArreglo = (19,2,2019)}
 
 vehiculo2 = Auto { patente = "EFG456", desgasteLlantas= [0.5, 0.66, 0.89, 0.24] , rpm = 2950, temperaturaAgua = 99, ultimoArreglo = (12,1,2020)}
-*Main> ordenReparacion (29,3,2020) [zulu,charly,alfa,lima] vehiculo2
+orden2 = prepararOrdenReparacion (29,3,2020) [zulu,charly,alfa,lima]
+*Main> aplicarOrdenReparacion orden2 vehiculo2
 Auto {patente = "EFG456", desgasteLlantas = [0.0,0.0,0.0,0.0], rpm = 2000, temperaturaAgua = 90, ultimoArreglo = (29,3,2020)}
 
 --Punto 6
