@@ -4,21 +4,21 @@ Ejemplos de invocacion y respuesta:
 auto1 = Auto { patente = "FG884NY", desgasteLlantas= [0.1,0.4,0.2,0], rpm = 1950, temperaturaAgua = 80, ultimoArreglo = (2,5,2017)}
 auto2 = Auto { patente = "BKQ647", desgasteLlantas= [0.2,0.5,0.6,0.1], rpm = 2050, temperaturaAgua = 60, ultimoArreglo = (27,9,2018)}
 auto3 = Auto { patente = "OFW321", desgasteLlantas= [0.1,0.1,0.1,0], rpm = 2020, temperaturaAgua = 75, ultimoArreglo = (5,1,2020)}
-*Main> estaEnOrden [auto1,auto2,auto3]
+*Main> estanOrdenadosPorDesgaste [auto1,auto2,auto3]
 True
 
 auto4 = Auto { patente = "FG884NY", desgasteLlantas= [0.1,0.4,0.2,0], rpm = 1950, temperaturaAgua = 80, ultimoArreglo = (2,5,2017)}
 auto5 = Auto { patente = "VBG546", desgasteLlantas= [0.3,0.5,0.6,0.1], rpm = 2050, temperaturaAgua = 60, ultimoArreglo = (5,1,2020)}
 auto6 = Auto { patente = "MDA381", desgasteLlantas= [0.1,0.1,0.1,0], rpm = 2010, temperaturaAgua = 90, ultimoArreglo = (5,1,2016)}
-*Main> estaEnOrden [auto4,auto5,auto6]                                                                                                     
+*Main> estanOrdenadosPorDesgaste [auto4,auto5,auto6]                                                                                                     
 False
 
 auto7 = Auto { patente = "FG884NY", desgasteLlantas= [0.1,0.4,0.2,0], rpm = 1950, temperaturaAgua = 80, ultimoArreglo = (2,5,2017)}
-*Main> estaEnOrden [auto7]
+*Main> estanOrdenadosPorDesgaste [auto7]
 True
 
 auto8 = Auto { patente = "AP002TM", desgasteLlantas= [0.1,0.4,0.2,0.1], rpm = 2050, temperaturaAgua = 60, ultimoArreglo = (5,1,2019)}
-*Main> estaEnOrden [auto8]
+*Main> estanOrdenadosPorDesgaste [auto8]
 False
 
 --Punto 5
