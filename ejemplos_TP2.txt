@@ -53,9 +53,11 @@ Parte 1
 Si tengo una lista de tecnicos infinitos y llamo a:
 autoArreglo = Auto { patente = "DWG164", desgasteLlantas= [0.70, 0.45, 0.19, 0.29] , rpm = 3223, temperaturaAgua = 93, ultimoArreglo = (23,11,2017)}
 *Main> mecanicosQueDejanAutoEnCondicionesPrimero autoArreglo tecnicosInfinitos
-En este caso, dado a que se tendria que dar la operacion del tecnico sobre el auto, antes de poder devolver una lista con todos
-los que cumplen la condicion, se debe ejecutar todas las acciones posibles en la lista de elementos. Ésta, al ser infinita, no
-dara finalización jamás, dado a que no terminará de aplicar la accion de los infinitos tecnicos sobre los autos.
+[<function>]
+La función devolverá la primera de las funciones que logren dejar el auto en condiciones, ya que gracias al lazy evaluation, la lista se generará de forma
+recursiva a medida que resuelva la función y no una vez que haya finalizado de ejecutarse en cuestión, permitiendo obtener el primero de sus elementos
+sin realizar la evaluaciuón completa.
+
 
 Parte 2
 Si tengo una lista infinita de autos, aplicando:
