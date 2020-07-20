@@ -50,7 +50,8 @@ sonConsecutivos(Camino1,[Cabeza2|Cola2]):- puedeSeguirCon(Camino1,Cabeza2).
 %% Punto 6
 % parte A - 
 
-caminoLogico():-
+caminoLogico([UnaZona|OtraZona]):-ZonasLimitrofes(UnaZona,OtraZona).
+caminoLogico([_|]UnaZona|OtraZona):-caminoLogico([UnaZona|OtraZona]), caminoLogico([_|UnaZona]).
 
 % parte B -
 
