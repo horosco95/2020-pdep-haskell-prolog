@@ -29,6 +29,7 @@ zonasLimitrofes(UnaZona,OtraZona):- perteneceA(Region,UnaZona),perteneceA(Region
 %% Punto 4
 % parte A - 
 
+regionesLimitrofes(UnaRegion,OtraRegion):- perteneceA(UnaZona,UnaRegion), perteneceA(OtraZona,OtraRegion), UnaZona = OtraZona.
 
 
 % parte B - 
