@@ -33,6 +33,8 @@ zonasLimitrofes(UnaZona,OtraZona):- perteneceA(Region,UnaZona),perteneceA(Region
 
 % parte B - 
 
+regionesLejanas(UnaRegion,OtraRegion):- not(regionesLimitrofes(UnaRegion,OtraRegion)),
+    not((regionesLimitrofes(UnaRegion,OtraEnComun),regionesLimitrofes(OtraEnComun,OtraRegion))),UnaRegion \= OtraRegion.
 
 
 %% Punto 5
@@ -42,6 +44,7 @@ zonasLimitrofes(UnaZona,OtraZona):- perteneceA(Region,UnaZona),perteneceA(Region
 
 % parte B -
 
+sonConsecutivos(Camino1,[Cabeza2|Cola2]):- puedeSeguirCon(Camino1,Cabeza2).
 
 
 %% Punto 6
@@ -51,3 +54,5 @@ zonasLimitrofes(UnaZona,OtraZona):- perteneceA(Region,UnaZona),perteneceA(Region
 
 % parte B -
 
+caminoSeguro([Cabeza,Segundo|Cola]):- zonasLimitrofes(Cabeza,Segundo).
+%Pendiente de solucion
