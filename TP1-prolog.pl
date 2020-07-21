@@ -44,7 +44,7 @@ puedeSeguirCon([CabezaCamino|ColaCamino], Zona):- zonasLimitrofes(ColaCamino,Zon
 
 % parte B -
 
-sonConsecutivos(Camino1,[Cabeza2|Cola2]):- puedeSeguirCon(Camino1,Cabeza2).
+sonConsecutivos(Camino1,[Cabeza2|_]):- puedeSeguirCon(Camino1,Cabeza2).
 
 
 %% Punto 6
