@@ -82,11 +82,30 @@ Caso 15:
 >false
 
 Caso 16:
->
+?- regionesLejanas(Cuales,mordor).
+>Cuales = eriador ;
+>Cuales = montaniasNubladas ;
 
 Caso 17:
 >regionesLejanas(eriador,gondor)
 >true
 
+---- Parte 5 ----
 Caso 18:
 >
+
+Caso 19:
+>
+
+Caso 20:
+>
+
+---- Parte 6 ----
+
+Caso 23:
+?- caminoSeguro([comarca,rivendel,moria,lothlorien,edoras,minasTirith,minasMorgul,monteDelDestino]).
+true 
+
+Caso 24:
+?- caminoSeguro([rivendel,lothlorien,edoras,isengard,abismoDeHelm,minasTirith,minasMorgul]).
+false.
