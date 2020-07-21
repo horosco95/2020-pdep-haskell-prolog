@@ -1,1 +1,16 @@
 Ejemplos de invocacion y respuesta:
+
+Caso 7:
+>regionesLimitrofes(eriador,montaniasNubladas)
+>true
+
+Caso 8:
+>regionesLimitrofes(rohan,mordor)
+>false
+
+Caso 9:
+>regionesLimitrofes(eriador,Cual)}
+>montaniasNubladas
+
+Caso 10:
+>
