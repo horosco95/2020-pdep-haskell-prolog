@@ -98,7 +98,14 @@ Caso 19:
 >
 
 Caso 20:
->
+?-sonConsecutivos([comarca,rivendel,moria],[lothlorien,edoras,minasTirith]).
+>true
+
+?-sonConsecutivos([comarca,rivendel,isengard],[edoras,minasTirith,monteDelDestino]).
+>true
+
+?-sonConsecutivos([comarca,rivendel,isengard],[minasTirith,monteDelDestino,minasMorgul]).
+>false
 
 ---- Parte 6 ----
 
