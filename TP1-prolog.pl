@@ -32,8 +32,8 @@ zonasLimitrofes(UnaZona,OtraZona):- perteneceA(Region,UnaZona),perteneceA(Region
 regionesLimitrofes(UnaRegion,OtraRegion):- perteneceA(UnaRegion,UnaZona), perteneceA(OtraRegion,OtraZona), zonasLimitrofes(UnaZona,OtraZona), UnaRegion\=OtraRegion.
 
 % parte B - 
-
-regionesLejanas(UnaRegion,OtraRegion):- not(regionesLimitrofes(UnaRegion,OtraRegion)),
+region(Region):-perteneceA(Region,_).
+regionesLejanas(UnaRegion,OtraRegion):- region(UnaRegion), not(regionesLimitrofes(UnaRegion,OtraRegion)),
     not((regionesLimitrofes(UnaRegion,OtraEnComun),regionesLimitrofes(OtraEnComun,OtraRegion))),UnaRegion \= OtraRegion.
 
 
