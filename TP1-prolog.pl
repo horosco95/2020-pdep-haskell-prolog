@@ -55,5 +55,7 @@ caminoLogico([_|]UnaZona|OtraZona):-caminoLogico([UnaZona|OtraZona]), caminoLogi
 
 % parte B -
 
-caminoSeguro([Cabeza,Segundo|Cola]):- zonasLimitrofes(Cabeza,Segundo).
-%Pendiente de solucion
+caminoSeguro([A,B,C]):- not(primeras3ZonasMismaRegion([A,B,C])).
+caminoSeguro([A,B,C|Cola]):- not(primeras3ZonasMismaRegion([A,B,C])), caminoSeguro([B,C|Cola]).
+
+primeras3ZonasMismaRegion([A,B,C|_]):- zonasLimitrofes(A,B),zonasLimitrofes(B,C),perteneceA(Misma,A),perteneceA(Misma,B),perteneceA(Misma,C).
