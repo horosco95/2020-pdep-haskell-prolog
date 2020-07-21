@@ -13,4 +13,36 @@ Caso 9:
 >montaniasNubladas
 
 Caso 10:
+>regionesLimitrofes(gondor,Cual)
+>rohan
+>mordor
+
+Caso 11:
+>regionesLimitrofes(isengard,Cual)
+>false
+
+Caso 12:
+>regionesLimitrofes(mordor,_)
+>true
+
+Caso 13:
+>regionesLejanas(rohan,montaniasNubladas)
+>false
+
+Caso 14:
+>regionesLejanas(eriador,mordor)
+>true
+
+Caso 15:
+>regionesLejanas(eriador,rohan)
+>false
+
+Caso 16:
+>
+
+Caso 17:
+>regionesLejanas(eriador,gondor)
+>true
+
+Caso 18:
 >
