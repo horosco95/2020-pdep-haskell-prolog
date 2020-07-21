@@ -1,5 +1,49 @@
 Ejemplos de invocacion y respuesta:
 
+---- Parte 1 ----
+?- perteneceA(eriador,comarca).
+>true.
+
+?- perteneceA(gondor,edoras).
+>false.
+
+?- perteneceA(gondor,minasTirith).
+>true.
+
+?- perteneceA(Region,abismoDeHelm).
+>Region = rohan.
+
+?- perteneceA(mordor,Zonas).       
+>Zonas = minasMorgul ;
+>Zonas = monteDelDestino.
+
+---- Parte 3 ----
+Caso 1:
+?- zonasLimitrofes(comarca,monteDelDestino).
+>false.
+
+Caso 2:
+?- zonasLimitrofes(comarca,rivendel).        
+>true.
+
+Caso 3:
+?- zonasLimitrofes(rivendel,comarca). 
+>true.
+
+Caso 4:
+?- zonasLimitrofes(rivendel,moria).   
+>true 
+
+Caso 5:
+?- zonasLimitrofes(moria,rivendel).   
+>true 
+
+Caso 6:
+?- zonasLimitrofes(Zonas,rivendel). 
+Zonas = moria ;
+Zonas = comarca ;
+
+---- Parte 4 ----
 Caso 7:
 >regionesLimitrofes(eriador,montaniasNubladas)
 >true
