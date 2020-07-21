@@ -40,8 +40,10 @@ regionesLejanas(UnaRegion,OtraRegion):- region(UnaRegion), not(regionesLimitrofe
 %% Punto 5
 % parte A - 
 
-puedeSeguirCon([CabezaCamino|ColaCamino], Zona):- zonasLimitrofes(ColaCamino,Zona).
-
+ultimoElemento([Elem],Elem).
+ultimoElemento([_|Cola],Ultimo):- ultimoElemento(Cola,Ultimo).
+puedeSeguirCon(Camino,Zona):-ultimoElemento(Camino,Ultimo), zonasLimitrofes(Zona,Ultimo).
+    
 % parte B -
 
 sonConsecutivos(Camino1,[Cabeza2|_]):- puedeSeguirCon(Camino1,Cabeza2).
@@ -50,8 +52,8 @@ sonConsecutivos(Camino1,[Cabeza2|_]):- puedeSeguirCon(Camino1,Cabeza2).
 %% Punto 6
 % parte A - 
 
-caminoLogico([UnaZona|OtraZona]):-ZonasLimitrofes(UnaZona,OtraZona).
-caminoLogico([_|]UnaZona|OtraZona):-caminoLogico([UnaZona|OtraZona]), caminoLogico([_|UnaZona]).
+caminoLogico([A,B]):- zonasLimitrofes(A,B).
+caminoLogico([Zona1,Zona2|Cola]):- zonasLimitrofes(Zona1,Zona2), caminoLogico([Zona2|Cola]).
 
 % parte B -
 

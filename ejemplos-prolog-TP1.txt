@@ -45,40 +45,40 @@ Zonas = comarca ;
 
 ---- Parte 4 ----
 Caso 7:
->regionesLimitrofes(eriador,montaniasNubladas)
+?- regionesLimitrofes(eriador,montaniasNubladas)
 >true
 
 Caso 8:
->regionesLimitrofes(rohan,mordor)
+?- regionesLimitrofes(rohan,mordor)
 >false
 
 Caso 9:
->regionesLimitrofes(eriador,Cual)}
+?- regionesLimitrofes(eriador,Cual)}
 >montaniasNubladas
 
 Caso 10:
->regionesLimitrofes(gondor,Cual)
+?- regionesLimitrofes(gondor,Cual)
 >rohan
 >mordor
 
 Caso 11:
->regionesLimitrofes(isengard,Cual)
+?- regionesLimitrofes(isengard,Cual)
 >false
 
 Caso 12:
->regionesLimitrofes(mordor,_)
+?- regionesLimitrofes(mordor,_)
 >true
 
 Caso 13:
->regionesLejanas(rohan,montaniasNubladas)
+?- regionesLejanas(rohan,montaniasNubladas)
 >false
 
 Caso 14:
->regionesLejanas(eriador,mordor)
+?- regionesLejanas(eriador,mordor)
 >true
 
 Caso 15:
->regionesLejanas(eriador,rohan)
+?- regionesLejanas(eriador,rohan)
 >false
 
 Caso 16:
@@ -87,32 +87,45 @@ Caso 16:
 >Cuales = montaniasNubladas ;
 
 Caso 17:
->regionesLejanas(eriador,gondor)
+?- regionesLejanas(eriador,gondor)
 >true
 
 ---- Parte 5 ----
 Caso 18:
->
+?- puedeSeguirCon([comarca,rivendel,moria,lothlorien,edoras,minasTirith,minasMorgul,monteDelDestino],minasMorgul).
+>true
+
+?- puedeSeguirCon([comarca,rivendel,moria,lothlorien,edoras,minasTirith,minasMorgul,monteDelDestino],moria).
+>false
 
 Caso 19:
->
+?- puedeSeguirCon([moria,lothlorien,comarca],Cual)
+>rivendel.
 
 Caso 20:
-?-sonConsecutivos([comarca,rivendel,moria],[lothlorien,edoras,minasTirith]).
+?- sonConsecutivos([comarca,rivendel,moria],[lothlorien,edoras,minasTirith]).
 >true
 
-?-sonConsecutivos([comarca,rivendel,isengard],[edoras,minasTirith,monteDelDestino]).
+?- sonConsecutivos([comarca,rivendel,isengard],[edoras,minasTirith,monteDelDestino]).
 >true
 
-?-sonConsecutivos([comarca,rivendel,isengard],[minasTirith,monteDelDestino,minasMorgul]).
+?- sonConsecutivos([comarca,rivendel,isengard],[minasTirith,monteDelDestino,minasMorgul]).
 >false
 
 ---- Parte 6 ----
 
+Caso 21:
+?- caminoLogico([comarca,rivendel,moria,lothlorien,edoras,minasTirith,minasMorgul,monteDelDestino]).
+>true
+
+Caso 22
+?- caminoLogico([comarca,rivendel,lothlorien,edoras,monteDelDestino]).
+>false
+
 Caso 23:
 ?- caminoSeguro([comarca,rivendel,moria,lothlorien,edoras,minasTirith,minasMorgul,monteDelDestino]).
-true 
+>true 
 
 Caso 24:
 ?- caminoSeguro([rivendel,lothlorien,edoras,isengard,abismoDeHelm,minasTirith,minasMorgul]).
-false.
+>false.
