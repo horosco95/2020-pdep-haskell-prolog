@@ -43,7 +43,7 @@ puedeSeguirCon(Camino,Zona):-ultimoElemento(Camino,Ultimo), zonasLimitrofes(Zona
     
 % parte B -
 
-sonConsecutivos(Camino1,[Cabeza2|_]):- puedeSeguirCon(Camino1,Cabeza2).
+sonConsecutivos(Camino1,[Zona|_]):- puedeSeguirCon(Camino1,Zona).
 
 
 %% Punto 6
