@@ -1,3 +1,4 @@
+% ------- TP ENTREGA 1 --------
 %% Punto 1
 perteneceA(comarca,eriador).
 perteneceA(rivendel,eriador).
@@ -58,3 +59,5 @@ caminoSeguro([A,B,C]):- not(primeras3ZonasMismaRegion([A,B,C])).
 caminoSeguro([A,B,C|Cola]):- not(primeras3ZonasMismaRegion([A,B,C])), caminoSeguro([B,C|Cola]).
 
 primeras3ZonasMismaRegion([A,B,C|_]):- zonasLimitrofes(A,B),zonasLimitrofes(B,C),perteneceA(Misma,A),perteneceA(Misma,B),perteneceA(Misma,C).
+
+% ------- TP ENTREGA 2 --------
