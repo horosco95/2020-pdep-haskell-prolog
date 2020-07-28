@@ -1,14 +1,14 @@
 %% Punto 1
-perteneceA(eriador,comarca).
-perteneceA(eriador,rivendel).
-perteneceA(montaniasNubladas,moria).
-perteneceA(montaniasNubladas,lothlorien).
-perteneceA(rohan,edoras).
-perteneceA(rohan,isengard).
-perteneceA(rohan,abismoDeHelm).
-perteneceA(gondor,minasTirith).
-perteneceA(mordor,minasMorgul).
-perteneceA(mordor,monteDelDestino).
+perteneceA(comarca,eriador).
+perteneceA(rivendel,eriador).
+perteneceA(moria,montaniasNubladas).
+perteneceA(lothlorien,montaniasNubladas).
+perteneceA(edoras,rohan).
+perteneceA(isengard,rohan).
+perteneceA(abismoDeHelm,rohan).
+perteneceA(minasTirith,gondor).
+perteneceA(minasMorgul,mordor).
+perteneceA(monteDelDestino,mordor).
 
 %% Punto 2
 camino([comarca,rivendel,moria,lothlorien,edoras,minasTirith,minasMorgul,monteDelDestino]).
