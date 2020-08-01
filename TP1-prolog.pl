@@ -61,3 +61,56 @@ caminoSeguro([A,B,C|Cola]):- not(primeras3ZonasMismaRegion([A,B,C])), caminoSegu
 primeras3ZonasMismaRegion([A,B,C|_]):- zonasLimitrofes(A,B),zonasLimitrofes(B,C),perteneceA(Misma,A),perteneceA(Misma,B),perteneceA(Misma,C).
 
 % ------- TP ENTREGA 2 --------
+%% Punto 1
+% parte A - 
+
+% parte B - 
+
+% parte C - 
+/*
+[minasTirith,minasMorgul]
+[minasTirith,minasMorgul,monteDelDestino]
+[monteDelDestino,minasMorgul,minasTirith,minasMorgul]
+
+[minasTirith,minasMorgul]
+[minasTirith,minasMorgul,monteDelDestino]
+[monteDelDestino,minasMorgul,minasTirith]
+ */
+todosLosCaminosConducenAMordor([Camino]):- caminoConduceAMordor(Camino).
+todosLosCaminosConducenAMordor([UnCamino|Caminos]):- caminoConduceAMordor(UnCamino), todosLosCaminosConducenAMordor(Caminos). 
+caminoConduceAMordor(Camino):- last(Camino,Zona), perteneceA(Zona,mordor).
+%% Punto 2
+% parte A - 
+%viajero(Nombre, maiar(Nivel,PoderMagico)).
+viajero(gandalf, maiar(25, 260)).
+% parte B - 
+%viajero(Nombre, guerrera(raza, Arma, NivelArma)).
+viajero(legolas, guerrera(elfo, arco, 29)).
+viajero(legolas, guerrera(elfo, espada, 20)).
+viajero(gimli, guerrera(enano, hacha, 26)).
+viajero(aragorn, guerrera(dunedain, espada, 30)).
+viajero(boromir, guerrera(hombre, espada, 26)).
+viajero(gorbag, guerrera(orco, ballesta, 24)).
+viajero(ugluk, guerrera(uruk-hai, espada, 26)).
+viajero(ugluk, guerrera(uruk-hai, arco, 22)).
+% parte C - 
+%viajero(Nombre, pacifista(Raza, Edad)).
+viajero(frodo, pacifista(hobbit, 51)).
+viajero(sam, pacifista(hobbit, 36)).
+viajero(barbol, pacifista(ent, 5300)).
+%% Punto 3
+% parte A - 
+
+% parte B - 
+
+% parte C - 
+
+%% Punto 4
+% parte A - 
+
+% parte B - 
+
+%% Punto 5
+% parte A - 
+
+% parte B - 
