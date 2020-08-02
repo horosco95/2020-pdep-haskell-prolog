@@ -38,9 +38,7 @@ terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion):- regionesLimitrofes(UnaReg
 %% Punto 5
 % parte A - 
 
-ultimoElemento([Elem],Elem).
-ultimoElemento([_|Cola],Ultimo):- ultimoElemento(Cola,Ultimo).
-puedeSeguirCon(Camino,Zona):-ultimoElemento(Camino,Ultimo), zonasLimitrofes(Zona,Ultimo).
+puedeSeguirCon(Camino,Zona):-last(Camino,Ultimo), zonasLimitrofes(Zona,Ultimo).
     
 % parte B -
 
@@ -49,7 +47,7 @@ sonConsecutivos(Camino1,[Zona|_]):- puedeSeguirCon(Camino1,Zona).
 
 %% Punto 6
 % parte A - 
-
+caminoLogico([_]).
 caminoLogico([A,B]):- zonasLimitrofes(A,B).
 caminoLogico([Zona1,Zona2|Cola]):- zonasLimitrofes(Zona1,Zona2), caminoLogico([Zona2|Cola]).
 
