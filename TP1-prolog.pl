@@ -117,9 +117,47 @@ nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(hobbit, Edad)), Nivel 
 nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(ent, Edad)), Nivel is Edad / 100.
 %% Punto 4
 % parte A - 
-
+%grupo([frodo,sam,merry,pippin]).
+grupo([Integrante1,Integrante2]):- viajero(Integrante1,_), viajero(Integrante2,_), Integrante1 \= Integrante2.
+grupo(Grupo):- forall(member(Integrante,Grupo), viajero(Integrante,_)).
 % parte B - 
+% Functores:
+% integrante(Raza, NivelMinimo)
+% elemento(Elemento, CantidadMinima)
+% magia(PoderTotalMinimo)
 
+zonaRequerimiento(minasTirith, integrante(maiar, 25)).
+zonaRequerimiento(moria, elemento(armaduraMithril, 1)).
+zonaRequerimiento(isengard, integrante(maiar, 27)).
+zonaRequerimiento(isengard, magia(280)).
+zonaRequerimiento(abismoDeHelm, integrante(elfo, 28)).
+zonaRequerimiento(abismoDeHelm, integrante(enano, 20)).
+zonaRequerimiento(abismoDeHelm, integrante(maiar, 25)).
+zonaRequerimiento(abismoDeHelm, magia(200)).
+zonaRequerimiento(sagrario, elemento(anduril, 1)).
+zonaRequerimiento(minasMorgul, elemento(lembas, 2)).
+zonaRequerimiento(minasMorgul, elemento(luzEärendil, 1)).
+
+tiene(sam, lembas).
+tiene(sam, lembas).
+tiene(sam, lembas).
+tiene(gandalf, sombraGris).
+tiene(frodo, armaduraMithril).
+tiene(frodo, luzEärendil).
+tiene(frodo, lembas).
+tiene(frodo, capaElfica).
+tiene(sam, capaElfica).
+tiene(legolas, capaElfica).
+tiene(aragorn, capaElfica).
+tiene(aragorn, anduril).
+
+cumpleRequerimientos(RequerimientoZona, Grupo):- grupo(Grupo), zonaRequerimiento(_, RequerimientoZona), integranteCumple(RequerimientoZona, Grupo).
+integranteCumple(integrante(Raza, NivelMinimo), Grupo):-
+    member(Miembro, Grupo), razaViajero(Miembro, Raza), nivelViajero(Miembro, Nivel), Nivel >= NivelMinimo.
+integranteCumple(elemento(Elemento, CantidadMinima), Grupo):-
+    findall(Elemento, (member(Miembro, Grupo), tiene(Miembro, Elemento)), ListaElemento), length(ListaElemento, Cant), Cant >= CantidadMinima.
+integranteCumple(magia(PoderTotalMinimo), Grupo):-
+    member(Miembro, Grupo), viajero(Miembro, maiar(_, PoderMagico)), PoderMagico >= PoderTotalMinimo.
 %% Punto 5
 % parte A - 
 
