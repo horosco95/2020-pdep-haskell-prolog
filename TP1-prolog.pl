@@ -62,9 +62,10 @@ primeras3ZonasMismaRegion([A,B,C|_]):- zonasLimitrofes(A,B),zonasLimitrofes(B,C)
 %% Punto 1
 % parte A - 
 
-accionUltimo(Zona, Cantidad):-perteneceA(Zona, Region),append(ListaRegiones, Region), not(member(Region, listaRegiones)
-cantidadRegiones(Zona, Cantidad):-accionUltimo(Zona,Cantidad). 
-cantidadRegiones([_|Zona], Cantidad):-cantidadRegiones(_, Cantidad), accionUltimo(Zona,Cantidad), length(ListaRegiones, Cantidad).
+cantidadDeRegiones(Camino,Cantidad):-
+    findall(Region,(member(Zona,Camino), perteneceA(Zona,Region)),ListaRegiones),
+    list_to_set(ListaRegiones,Lista),
+    length(Lista,Cantidad).
 
 % parte B - 
 esVueltero(Camino):- list_to_set(Camino,Camino).
