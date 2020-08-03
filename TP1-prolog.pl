@@ -162,3 +162,4 @@ integranteCumple(magia(PoderTotalMinimo), Grupo):-
 % parte A - 
 
 % parte B - 
+seSientenComoEnCasa(Grupo, Region):- forall(perteneceA(Zona,Region), puedeAtravesar(Zona,Grupo)).
