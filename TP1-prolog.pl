@@ -67,7 +67,7 @@ cantidadRegiones(Zona, Cantidad):-accionUltimo(Zona,Cantidad).
 cantidadRegiones([_|Zona], Cantidad):-cantidadRegiones(_, Cantidad), accionUltimo(Zona,Cantidad), length(ListaRegiones, Cantidad).
 
 % parte B - 
-
+esVueltero(Camino):- list_to_set(Camino,Camino).
 % parte C - 
 /*
 [minasTirith,minasMorgul]
@@ -104,9 +104,16 @@ viajero(barbol, pacifista(ent, 5300)).
 % parte A - 
 
 % parte B - 
-
+armaViajero(Persona,baston):- viajero(Persona, maiar(_)).
+armaViajero(Persona,daga):- viajero(Persona, pacifista(hobbit, Edad)), Edad =< 50.
+armaViajero(Persona,espada):- viajero(Persona, pacifista(hobbit, Edad)), Edad > 50.
+armaViajero(Persona,fuerza):- viajero(Persona, pacifista(ent, _)).
+armaViajero(Persona,Arma):- viajero(Persona, guerrera(_, Arma, _)).
 % parte C - 
-
+nivelViajero(Persona, Nivel):- viajero(Persona, maiar(Nivel, _)).
+nivelViajero(Persona, Nivel):- forall(viajero(Persona, guerrera(_, UnaArma, Nivel)), (viajero(Persona, guerrera(_, OtraArma, Level)), UnaArma \= OtraArma, Nivel > Level)).
+nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(hobbit, Edad)), Nivel is Edad / 4.
+nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(ent, Edad)), Nivel is Edad / 100.
 %% Punto 4
 % parte A - 
 
