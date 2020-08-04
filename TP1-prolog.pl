@@ -69,7 +69,7 @@ cantidadDeRegiones(Camino,Cantidad):-
     length(Lista,Cantidad).
 
 % parte B - 
-esVueltero(Camino):- list_to_set(Camino,Camino).
+esVueltero(Camino):- not(list_to_set(Camino,Camino)).
 % parte C - 
 /*
 [minasTirith,minasMorgul]
