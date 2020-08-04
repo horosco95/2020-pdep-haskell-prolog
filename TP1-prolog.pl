@@ -161,5 +161,7 @@ integranteCumple(magia(PoderTotalMinimo), Grupo):-
 %% Punto 5
 % parte A - 
 
+puedeAtravesar(Zona,Grupo):-forall(zonaRequerimiento(Zona,Requerimiento), cumpleRequerimientos(Requerimiento,Grupo)).
+
 % parte B - 
 seSientenComoEnCasa(Grupo, Region):- forall(perteneceA(Zona,Region), puedeAtravesar(Zona,Grupo)).
