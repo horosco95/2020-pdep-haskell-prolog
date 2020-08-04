@@ -106,9 +106,9 @@ viajero(barbol, pacifista(ent, 5300)).
 % parte A - 
 
 % parte B - 
-armaViajero(Persona,baston):- viajero(Persona, maiar(_)).
+armaViajero(Persona,baston):- viajero(Persona, maiar(_,_)).
 armaViajero(Persona,daga):- viajero(Persona, pacifista(hobbit, Edad)), Edad =< 50.
-armaViajero(Persona,espada):- viajero(Persona, pacifista(hobbit, Edad)), Edad > 50.
+armaViajero(Persona,espadaCorta):- viajero(Persona, pacifista(hobbit, Edad)), Edad > 50.
 armaViajero(Persona,fuerza):- viajero(Persona, pacifista(ent, _)).
 armaViajero(Persona,Arma):- viajero(Persona, guerrera(_, Arma, _)).
 % parte C - 
