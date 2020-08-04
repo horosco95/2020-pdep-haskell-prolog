@@ -30,7 +30,6 @@ zonasLimitrofes(UnaZona,OtraZona):- perteneceA(UnaZona,Region),perteneceA(OtraZo
 regionesLimitrofes(UnaRegion,OtraRegion):- perteneceA(UnaZona,UnaRegion), perteneceA(OtraZona,OtraRegion), zonasLimitrofes(UnaZona,OtraZona), UnaRegion\=OtraRegion.
 
 % parte B - 
-%region(Region):-perteneceA(Region,_).
 regionesLejanas(UnaRegion,OtraRegion):- perteneceA(_,UnaRegion),not(regionesLimitrofes(UnaRegion,OtraRegion)),
     not(terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion)),UnaRegion\=OtraRegion.
 terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion):- regionesLimitrofes(UnaRegion,OtraEnComun),regionesLimitrofes(OtraEnComun,OtraRegion),UnaRegion\=OtraRegion.
@@ -41,9 +40,7 @@ terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion):- regionesLimitrofes(UnaReg
 puedeSeguirCon(Camino,Zona):-last(Camino,Ultimo), zonasLimitrofes(Zona,Ultimo).
     
 % parte B -
-
 sonConsecutivos(Camino1,[Zona|_]):- puedeSeguirCon(Camino1,Zona).
-
 
 %% Punto 6
 % parte A - 
@@ -71,15 +68,6 @@ cantidadDeRegiones(Camino,Cantidad):-
 % parte B - 
 esVueltero(Camino):- not(list_to_set(Camino,Camino)).
 % parte C - 
-/*
-[minasTirith,minasMorgul]
-[minasTirith,minasMorgul,monteDelDestino]
-[monteDelDestino,minasMorgul,minasTirith,minasMorgul]
-
-[minasTirith,minasMorgul]
-[minasTirith,minasMorgul,monteDelDestino]
-[monteDelDestino,minasMorgul,minasTirith]
- */
 todosLosCaminosConducenAMordor([Camino]):- caminoConduceAMordor(Camino).
 todosLosCaminosConducenAMordor([UnCamino|Caminos]):- caminoConduceAMordor(UnCamino), todosLosCaminosConducenAMordor(Caminos). 
 caminoConduceAMordor(Camino):- last(Camino,Zona), perteneceA(Zona,mordor).
@@ -88,7 +76,7 @@ caminoConduceAMordor(Camino):- last(Camino,Zona), perteneceA(Zona,mordor).
 %viajero(Nombre, maiar(Nivel,PoderMagico)).
 viajero(gandalf, maiar(25, 260)).
 % parte B - 
-%viajero(Nombre, guerrera(raza, Arma, NivelArma)).
+%viajero(Nombre, guerrera(Raza, Arma, NivelArma)).
 viajero(legolas, guerrera(elfo, arco, 29)).
 viajero(legolas, guerrera(elfo, espada, 20)).
 viajero(gimli, guerrera(enano, hacha, 26)).
@@ -118,15 +106,9 @@ nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(hobbit, Edad)), Nivel 
 nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(ent, Edad)), Nivel is Edad / 100.
 %% Punto 4
 % parte A - 
-%grupo([frodo,sam,merry,pippin]).
 grupo([Integrante1,Integrante2]):- viajero(Integrante1,_), viajero(Integrante2,_), Integrante1 \= Integrante2.
 grupo(Grupo):- forall(member(Integrante,Grupo), viajero(Integrante,_)).
 % parte B - 
-% Functores:
-% integrante(Raza, NivelMinimo)
-% elemento(Elemento, CantidadMinima)
-% magia(PoderTotalMinimo)
-
 zonaRequerimiento(minasTirith, integrante(maiar, 25)).
 zonaRequerimiento(moria, elemento(armaduraMithril, 1)).
 zonaRequerimiento(isengard, integrante(maiar, 27)).
