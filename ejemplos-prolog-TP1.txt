@@ -1,19 +1,19 @@
 Ejemplos de invocacion y respuesta:
 
 ---- Parte 1 ----
-?- perteneceA(eriador,comarca).
+?- perteneceA(comarca,eriador).
 >true.
 
-?- perteneceA(gondor,edoras).
+?- perteneceA(edoras,gondor).
 >false.
 
-?- perteneceA(gondor,minasTirith).
+?- perteneceA(minasTirith,gondor).
 >true.
 
-?- perteneceA(Region,abismoDeHelm).
+?- perteneceA(abismoDeHelm,Region).
 >Region = rohan.
 
-?- perteneceA(mordor,Zonas).       
+?- perteneceA(Zonas,mordor).       
 >Zonas = minasMorgul ;
 >Zonas = monteDelDestino.
 
