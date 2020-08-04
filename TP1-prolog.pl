@@ -30,7 +30,6 @@ zonasLimitrofes(UnaZona,OtraZona):- perteneceA(UnaZona,Region),perteneceA(OtraZo
 regionesLimitrofes(UnaRegion,OtraRegion):- perteneceA(UnaZona,UnaRegion), perteneceA(OtraZona,OtraRegion), zonasLimitrofes(UnaZona,OtraZona), UnaRegion\=OtraRegion.
 
 % parte B - 
-%region(Region):-perteneceA(Region,_).
 regionesLejanas(UnaRegion,OtraRegion):- perteneceA(_,UnaRegion),not(regionesLimitrofes(UnaRegion,OtraRegion)),
     not(terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion)),UnaRegion\=OtraRegion.
 terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion):- regionesLimitrofes(UnaRegion,OtraEnComun),regionesLimitrofes(OtraEnComun,OtraRegion),UnaRegion\=OtraRegion.
@@ -41,9 +40,7 @@ terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion):- regionesLimitrofes(UnaReg
 puedeSeguirCon(Camino,Zona):-last(Camino,Ultimo), zonasLimitrofes(Zona,Ultimo).
     
 % parte B -
-
 sonConsecutivos(Camino1,[Zona|_]):- puedeSeguirCon(Camino1,Zona).
-
 
 %% Punto 6
 % parte A - 
@@ -52,12 +49,12 @@ caminoLogico([A,B]):- zonasLimitrofes(A,B).
 caminoLogico([Zona1,Zona2|Cola]):- zonasLimitrofes(Zona1,Zona2), caminoLogico([Zona2|Cola]).
 
 % parte B -
-
+caminoSeguro([A]):- perteneceA(A,_).
+caminoSeguro([A,B]):- zonasLimitrofes(A,B), perteneceA(A,Region1), perteneceA(B,Region2), regionesLimitrofes(Region1,Region2).
 caminoSeguro([A,B,C]):- not(primeras3ZonasMismaRegion([A,B,C])).
 caminoSeguro([A,B,C|Cola]):- not(primeras3ZonasMismaRegion([A,B,C])), caminoSeguro([B,C|Cola]).
 
-primeras3ZonasMismaRegion([A,B,C|_]):- zonasLimitrofes(A,B),zonasLimitrofes(B,C),perteneceA(Misma,A),perteneceA(Misma,B),perteneceA(Misma,C).
-
+primeras3ZonasMismaRegion([A,B,C|_]):- zonasLimitrofes(A,B),zonasLimitrofes(B,C),perteneceA(A, MismaRegion),perteneceA(B, MismaRegion),perteneceA(C, MismaRegion).
 % ------- TP ENTREGA 2 --------
 %% Punto 1
 % parte A - 
@@ -68,17 +65,8 @@ cantidadDeRegiones(Camino,Cantidad):-
     length(Lista,Cantidad).
 
 % parte B - 
-esVueltero(Camino):- list_to_set(Camino,Camino).
+esVueltero(Camino):- not(list_to_set(Camino,Camino)).
 % parte C - 
-/*
-[minasTirith,minasMorgul]
-[minasTirith,minasMorgul,monteDelDestino]
-[monteDelDestino,minasMorgul,minasTirith,minasMorgul]
-
-[minasTirith,minasMorgul]
-[minasTirith,minasMorgul,monteDelDestino]
-[monteDelDestino,minasMorgul,minasTirith]
- */
 todosLosCaminosConducenAMordor([Camino]):- caminoConduceAMordor(Camino).
 todosLosCaminosConducenAMordor([UnCamino|Caminos]):- caminoConduceAMordor(UnCamino), todosLosCaminosConducenAMordor(Caminos). 
 caminoConduceAMordor(Camino):- last(Camino,Zona), perteneceA(Zona,mordor).
@@ -87,7 +75,7 @@ caminoConduceAMordor(Camino):- last(Camino,Zona), perteneceA(Zona,mordor).
 %viajero(Nombre, maiar(Nivel,PoderMagico)).
 viajero(gandalf, maiar(25, 260)).
 % parte B - 
-%viajero(Nombre, guerrera(raza, Arma, NivelArma)).
+%viajero(Nombre, guerrera(Raza, Arma, NivelArma)).
 viajero(legolas, guerrera(elfo, arco, 29)).
 viajero(legolas, guerrera(elfo, espada, 20)).
 viajero(gimli, guerrera(enano, hacha, 26)).
@@ -105,9 +93,9 @@ viajero(barbol, pacifista(ent, 5300)).
 % parte A - 
 
 % parte B - 
-armaViajero(Persona,baston):- viajero(Persona, maiar(_)).
+armaViajero(Persona,baston):- viajero(Persona, maiar(_,_)).
 armaViajero(Persona,daga):- viajero(Persona, pacifista(hobbit, Edad)), Edad =< 50.
-armaViajero(Persona,espada):- viajero(Persona, pacifista(hobbit, Edad)), Edad > 50.
+armaViajero(Persona,espadaCorta):- viajero(Persona, pacifista(hobbit, Edad)), Edad > 50.
 armaViajero(Persona,fuerza):- viajero(Persona, pacifista(ent, _)).
 armaViajero(Persona,Arma):- viajero(Persona, guerrera(_, Arma, _)).
 % parte C - 
@@ -117,15 +105,9 @@ nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(hobbit, Edad)), Nivel 
 nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(ent, Edad)), Nivel is Edad / 100.
 %% Punto 4
 % parte A - 
-%grupo([frodo,sam,merry,pippin]).
 grupo([Integrante1,Integrante2]):- viajero(Integrante1,_), viajero(Integrante2,_), Integrante1 \= Integrante2.
 grupo(Grupo):- forall(member(Integrante,Grupo), viajero(Integrante,_)).
 % parte B - 
-% Functores:
-% integrante(Raza, NivelMinimo)
-% elemento(Elemento, CantidadMinima)
-% magia(PoderTotalMinimo)
-
 zonaRequerimiento(minasTirith, integrante(maiar, 25)).
 zonaRequerimiento(moria, elemento(armaduraMithril, 1)).
 zonaRequerimiento(isengard, integrante(maiar, 27)).
@@ -151,7 +133,7 @@ tiene(legolas, capaElfica).
 tiene(aragorn, capaElfica).
 tiene(aragorn, anduril).
 
-cumpleRequerimientos(RequerimientoZona, Grupo):- grupo(Grupo), zonaRequerimiento(_, RequerimientoZona), integranteCumple(RequerimientoZona, Grupo).
+cumpleRequerimiento(RequerimientoZona, Grupo):- grupo(Grupo), zonaRequerimiento(_, RequerimientoZona), integranteCumple(RequerimientoZona, Grupo).
 integranteCumple(integrante(Raza, NivelMinimo), Grupo):-
     member(Miembro, Grupo), razaViajero(Miembro, Raza), nivelViajero(Miembro, Nivel), Nivel >= NivelMinimo.
 integranteCumple(elemento(Elemento, CantidadMinima), Grupo):-
