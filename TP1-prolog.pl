@@ -152,7 +152,7 @@ tiene(legolas, capaElfica).
 tiene(aragorn, capaElfica).
 tiene(aragorn, anduril).
 
-cumpleRequerimientos(RequerimientoZona, Grupo):- grupo(Grupo), zonaRequerimiento(_, RequerimientoZona), integranteCumple(RequerimientoZona, Grupo).
+cumpleRequerimiento(RequerimientoZona, Grupo):- grupo(Grupo), zonaRequerimiento(_, RequerimientoZona), integranteCumple(RequerimientoZona, Grupo).
 integranteCumple(integrante(Raza, NivelMinimo), Grupo):-
     member(Miembro, Grupo), razaViajero(Miembro, Raza), nivelViajero(Miembro, Nivel), Nivel >= NivelMinimo.
 integranteCumple(elemento(Elemento, CantidadMinima), Grupo):-
