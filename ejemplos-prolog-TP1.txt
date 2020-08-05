@@ -132,8 +132,14 @@ Caso 24:
 ----------- Trabajo Practico 2 -----------
 ---- Punto 1 ----
 Caso 1:
+?- cantidadDeRegiones([comarca,rivendel,moria], 2).
+true.
 Caso 2:
+?- cantidadDeRegiones([minasTirith,minasMorgul], Cuantos).
+Cuantos = 2.
 Caso 3:
+?- cantidadDeRegiones([moria,isengard,edoras,minasMorgul,minasTirith], 2).
+false.
 Caso 4:
 ?- esVueltero([rivendel,comarca]).
 false.
@@ -151,12 +157,29 @@ Caso 8:
 false.
 ---- Punto 3 ----
 Caso 9:
+?- razaViajero(gandalf,maiar).
+true.
 Caso 10:
+?- razaViajero(legolas,elfo).
+true.
 Caso 11:
+?- razaViajero(gorbag,orco).
+true.
 Caso 12:
+?- razaViajero(ugluk,uruk-hai).
+true
 Caso 13:
+?- razaViajero(frodo,hobbit).
+true.
 Caso 14:
+?- razaViajero(barbol,ent).
+true.
 Caso 15:
+?- razaViajero(ugluk,Raza).
+Raza = uruk-hai
+
+?- razaViajero(Persona,uruk-hai).
+Persona = ugluk
 Caso 16:
 ?- armaViajero(gandalf,baston).  
 true ;
@@ -184,13 +207,22 @@ Viajero = frodo,
 Arma = espadaCorta ;
 ...
 Caso 22:
+?- nivelViajero(gandalf,25).
+true.
 Caso 23:
+
 Caso 24:
+?- nivelViajero(legolas,29).
+true.
 Caso 25:
+?- nivelViajero(sam,9).
+true.
 Caso 26:
 Caso 27:
 Caso 28:
 Caso 29:
+?- nivelViajero(Quienes,25).
+Quienes = gandalf.
 ---- Punto 4 ----
 Caso 30:
 ?- grupo([frodo,sam,merry,pippin]).
