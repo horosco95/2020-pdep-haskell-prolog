@@ -210,7 +210,8 @@ Caso 22:
 ?- nivelViajero(gandalf,25).
 true.
 Caso 23:
-
+?- nivelViajero(gorbag,Cual).
+Cual = 24.
 Caso 24:
 ?- nivelViajero(legolas,29).
 true.
@@ -218,8 +219,16 @@ Caso 25:
 ?- nivelViajero(sam,9).
 true.
 Caso 26:
+?- nivelViajero(barbol,Cual).
+Cual = 53
 Caso 27:
+?- nivelViajero(Quien,26).
+Quien = ugluk
+Quien = gimli
+Quien = boromir
 Caso 28:
+?- nivelViajero(Quien,22).
+false.
 Caso 29:
 ?- nivelViajero(Quienes,25).
 Quienes = gandalf.
@@ -230,6 +239,7 @@ false.
 Caso 31:
 ?- grupo([legolas,gimli]).          
 true ;
+
 Caso 32:
 ?- grupo([A,B]).
 A = gandalf,
@@ -239,25 +249,40 @@ B = legolas ;
 A = gandalf,
 B = gimli ;
 ...
-Caso 33:
+
+Caso 32:
 ?- cumpleRequerimiento(elemento(armaduraMithril, 1),[gandalf,aragorn,frodo]).
 true.
-Caso 34:
+Caso 33:
 ?- cumpleRequerimiento(magia(200),[gandalf,aragorn,legolas,gimli]).                   
-true ;
+true.
+Caso 34:
+?- cumpleRequerimiento(integrante(maiar, 27), [gandaf,sam,frodo]).
+false.
 Caso 35:
+?- cumpleRequerimiento(integrante(maiar, 25), [gandalf,legolas,aragorn]).
+true.
 Caso 36:
 ?- cumpleRequerimiento(elemento(lembas, 2),[frodo,sam]).           
 true ;
 Caso 37:
+?- cumpleRequerimiento(integrante(maiar, 25), [gorbag,ugluk]).
+false.
 Caso 38:
+?- puedeAtravesar(moria, [gandalf,aragorn,frodo]).
+true.
 Caso 39:
-?- cumpleRequerimiento(Requerimiento, [Integrante1,Integrante2]).
-...
+?- puedeAtravesar(abismoDeHelm, Grupo).
+true.
 ---- Punto 5 ----
 Caso 40:
+?- puedeAtravesar(isengard, Grupo).
+
 Caso 41:
+?- puedeAtravesar(minasMorgul, [frodo,sam]).
+true.
 Caso 42:
+
 Caso 43:
 Caso 44:
 Caso 45:
