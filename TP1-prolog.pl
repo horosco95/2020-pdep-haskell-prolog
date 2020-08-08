@@ -148,7 +148,7 @@ integranteCumple(magia(PoderTotalMinimo), Grupo):-
 %% Punto 5
 % parte A - 
 
-zona(Zona):-
+zona(Zona):-perteneceA(Zona,_).
 puedeAtravesar(Zona,Grupo):-zona(Zona), grupo(Grupo), forall(zonaRequerimiento(Zona,Requerimiento), cumpleRequerimiento(Requerimiento,Grupo)).
 
 % parte B - 
