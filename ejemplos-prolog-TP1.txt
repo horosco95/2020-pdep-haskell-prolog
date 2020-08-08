@@ -282,18 +282,31 @@ Caso 41:
 ?- puedeAtravesar(minasMorgul, [frodo,sam]).
 true.
 Caso 42:
-
+puedeAtravesar(Cual, [frodo,sam]).
+Cual = comarca
+Cual = comarca
+Cual = rivendel
+Cual = rivendel
+Cual = moria
+Cual = moria
+Cual = lothlorien
+Cual = lothlorien
+Cual = edoras
+Cual = edoras
+Cual = minasMorgul
+Cual = minasMorgul
+Cual = monteDelDestino
+Cual = monteDelDestino
 Caso 43:
-Caso 44:
-Caso 45:
-?- seSientenComoEnCasa([frodo,sam], eriador).
+?- seSientenComoEnCasa([sam,frodo], eriador).
 true.
-Caso 46:
-?- seSientenComoEnCasa([frodo,sam], rohan).
+Caso 44:
+?- seSientenComoEnCasa([sam,frodo], rohan).
 false.
-Caso 47:
+Caso 
+Caso 45:
 ?- seSientenComoEnCasa([_,_], rohan).
 false.
-Caso 48:
+Caso 46:
 ?- seSientenComoEnCasa([_,_], mordor).
 true.
