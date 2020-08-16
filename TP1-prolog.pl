@@ -145,7 +145,14 @@ integranteCumple(integrante(Raza, NivelMinimo), Grupo):-
 integranteCumple(elemento(Elemento, CantidadMinima), Grupo):-
     findall(Elemento, (member(Miembro, Grupo), tiene(Miembro, Elemento)), ListaElemento), length(ListaElemento, Cant), Cant >= CantidadMinima.
 integranteCumple(magia(PoderTotalMinimo), Grupo):-
-    member(Miembro, Grupo), viajero(Miembro, maiar(_, PoderMagico)), PoderMagico >= PoderTotalMinimo.
+    poderMagicoGrupo(Grupo, Cantidad), Cantidad > PoderTotalMinimo.
+
+poderMagicoGrupo(Grupo, PoderMagicoTotal):-
+   	findall(PoderMagico, (member(Miembro, Grupo),magia(Miembro, PoderMagico)), ListaPoderMagico), sumlist(ListaPoderMagico,PoderMagicoTotal).
+magia(Integrante, PoderMagico):- razaViajero(Integrante,elfo), nivelViajero(Integrante, Nivel), PoderMagico is Nivel * 2.
+magia(Integrante, PoderMagico):- razaViajero(Integrante,Raza), member(Raza,[dunedain,enano]), nivelViajero(Integrante, PoderMagico).
+magia(Integrante, PoderMagico):- razaViajero(Integrante,maiar), viajero(Integrante, maiar(_,PoderMagico)).
+magia(Integrante, 0):- razaViajero(Integrante,Raza), not(member(Raza,[elfo,dunedain,enano,maiar])).
 %% Punto 5
 % parte A - 
 
