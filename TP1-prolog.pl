@@ -65,25 +65,22 @@ cantidadDeRegiones(Camino,Cantidad):-
     length(Lista,Cantidad).
 
 % parte B - 
-esVueltero(Camino):- not(list_to_set(Camino,Camino)).
+esVueltero(Camino):- nth1(Pos1,Camino,Zona), nth1(Pos2,Camino,Zona), Pos2\=Pos1.
 % parte C - 
-todosLosCaminosConducenAMordor([Camino]):- caminoConduceAMordor(Camino).
-todosLosCaminosConducenAMordor([UnCamino|Caminos]):- caminoConduceAMordor(UnCamino), todosLosCaminosConducenAMordor(Caminos). 
+todosLosCaminosConducenAMordor(ListaCaminos):- forall(member(Camino,ListaCaminos), caminoConduceAMordor(Camino)).
 caminoConduceAMordor(Camino):- last(Camino,Zona), perteneceA(Zona,mordor).
 %% Punto 2
 % parte A - 
 %viajero(Nombre, maiar(Nivel,PoderMagico)).
 viajero(gandalf, maiar(25, 260)).
 % parte B - 
-%viajero(Nombre, guerrera(Raza, Arma, NivelArma)).
-viajero(legolas, guerrera(elfo, arco, 29)).
-viajero(legolas, guerrera(elfo, espada, 20)).
-viajero(gimli, guerrera(enano, hacha, 26)).
-viajero(aragorn, guerrera(dunedain, espada, 30)).
-viajero(boromir, guerrera(hombre, espada, 26)).
-viajero(gorbag, guerrera(orco, ballesta, 24)).
-viajero(ugluk, guerrera(uruk-hai, espada, 26)).
-viajero(ugluk, guerrera(uruk-hai, arco, 22)).
+%viajero(Nombre, guerrera(raza, [(Arma,Nivel)]).
+viajero(legolas, guerrera(elfo, [(arco,29),(espada,20)])).
+viajero(gimli, guerrera(enano, [(hacha, 26)])).
+viajero(aragorn, guerrera(dunedain, [(espada, 30)])).
+viajero(boromir, guerrera(hombre, [(espada, 26)])).
+viajero(gorbag, guerrera(orco, [(ballesta, 24)])).
+viajero(ugluk, guerrera(uruk-hai,[(espada,26),(arco,22)])).
 % parte C - 
 %viajero(Nombre, pacifista(Raza, Edad)).
 viajero(frodo, pacifista(hobbit, 51)).
