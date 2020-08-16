@@ -193,18 +193,20 @@ Caso 19:
 ?- armaViajero(sam,daga).        
 true ;
 Caso 20:
-?- armaViajero(ugluk,espada). 
-true ;
-?- armaViajero(ugluk,arco).   
+?- armaViajero(ugluk,[espada,arco]).
 true.
 Caso 21:
-?- armaViajero(Viajero,Arma). 
-Viajero = gandalf,
-Arma = baston ;
-Viajero = sam,
-Arma = daga ;
-Viajero = frodo,
-Arma = espadaCorta ;
+?- armaViajero(Persona,Armas).
+Armas = baston,
+Persona = gandalf
+Armas = daga,
+Persona = sam
+Armas = espadaCorta,
+Persona = frodo
+Armas = fuerza,
+Persona = barbol
+Armas = [arco, espada],
+Persona = legolas
 ...
 Caso 22:
 ?- nivelViajero(gandalf,25).
@@ -239,16 +241,6 @@ false.
 Caso 31:
 ?- grupo([legolas,gimli]).          
 true ;
-
-Caso 32:
-?- grupo([A,B]).
-A = gandalf,
-B = legolas ;
-A = gandalf,
-B = legolas ;
-A = gandalf,
-B = gimli ;
-...
 
 Caso 32:
 ?- cumpleRequerimiento(elemento(armaduraMithril, 1),[gandalf,aragorn,frodo]).
