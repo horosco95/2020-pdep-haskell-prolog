@@ -107,8 +107,12 @@ nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(hobbit, Edad)), Nivel 
 nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(ent, Edad)), Nivel is Edad / 100.
 %% Punto 4
 % parte A - 
-grupo([Integrante1,Integrante2]):- viajero(Integrante1,_), viajero(Integrante2,_), Integrante1 \= Integrante2.
-grupo(Grupo):- forall(member(Integrante,Grupo), viajero(Integrante,_)).
+grupo(Integrantes):- permutation(Integrantes,Miembros), findall(Integrante, viajero(Integrante,_),Viajeros),
+    gruposPosibles(Viajeros,Miembros), length(Miembros, Cant), Cant >= 1.
+
+gruposPosibles([], []).
+gruposPosibles([Posible|Resto], [Posible|Integrantes]):- viajero(Posible,_), gruposPosibles(Resto, Integrantes).
+gruposPosibles([_|Resto],Integrantes):- gruposPosibles(Resto,Integrantes).
 % parte B - 
 zonaRequerimiento(minasTirith, integrante(maiar, 25)).
 zonaRequerimiento(moria, elemento(armaduraMithril, 1)).
