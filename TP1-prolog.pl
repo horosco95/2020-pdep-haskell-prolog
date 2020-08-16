@@ -67,8 +67,7 @@ cantidadDeRegiones(Camino,Cantidad):-
 % parte B - 
 esVueltero(Camino):- nth1(Pos1,Camino,Zona), nth1(Pos2,Camino,Zona), Pos2\=Pos1.
 % parte C - 
-todosLosCaminosConducenAMordor([Camino]):- caminoConduceAMordor(Camino).
-todosLosCaminosConducenAMordor([UnCamino|Caminos]):- caminoConduceAMordor(UnCamino), todosLosCaminosConducenAMordor(Caminos). 
+todosLosCaminosConducenAMordor(ListaCaminos):- forall(member(Camino,ListaCaminos), caminoConduceAMordor(Camino)).
 caminoConduceAMordor(Camino):- last(Camino,Zona), perteneceA(Zona,mordor).
 %% Punto 2
 % parte A - 
