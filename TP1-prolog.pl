@@ -160,4 +160,5 @@ zona(Zona):-perteneceA(Zona,_).
 puedeAtravesar(Zona,Grupo):-zona(Zona), grupo(Grupo), forall(zonaRequerimiento(Zona,Requerimiento), cumpleRequerimiento(Requerimiento,Grupo)).
 
 % parte B - 
-seSientenComoEnCasa(Grupo, Region):- forall(perteneceA(Zona,Region), puedeAtravesar(Zona,Grupo)).
+seSientenComoEnCasa(Grupo, Region):- perteneceA(_,Region), grupo(Grupo),
+    forall(perteneceA(Zona,Region), puedeAtravesar(Zona,Grupo)).
