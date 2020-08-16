@@ -96,7 +96,7 @@ armaViajero(Persona,baston):- viajero(Persona, maiar(_,_)).
 armaViajero(Persona,daga):- viajero(Persona, pacifista(hobbit, Edad)), Edad =< 50.
 armaViajero(Persona,espadaCorta):- viajero(Persona, pacifista(hobbit, Edad)), Edad > 50.
 armaViajero(Persona,fuerza):- viajero(Persona, pacifista(ent, _)).
-armaViajero(Persona,Arma):- viajero(Persona, guerrera(_, ListaArmas)), armaGuerrera(Arma,ListaArmas).
+armaViajero(Persona,ListaArmas):- viajero(Persona, guerrera(_, ListaArmasNivel)), findall(Arma, armaGuerrera(Arma,ListaArmasNivel), ListaArmas).
 armaGuerrera(Arma,ListaArmas):- member((Arma,_),ListaArmas).
 % parte C - 
 nivelViajero(Persona, Nivel):- viajero(Persona, maiar(Nivel, _)).
