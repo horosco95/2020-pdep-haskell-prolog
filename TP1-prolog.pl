@@ -93,7 +93,6 @@ viajero(barbol, pacifista(ent, 5300)).
 % parte A - 
 razaViajero(Persona,maiar):- viajero(Persona, maiar(_,_)).
 razaViajero(Persona,Raza):- viajero(Persona, guerrera(Raza,_,_)).
-razaViajero(Persona,Raza):- viajero(Persona, pacifista(Raza,_,_)).
 razaViajero(Persona,Raza):- viajero(Persona, pacifista(Raza,_)).
 % parte B - 
 armaViajero(Persona,baston):- viajero(Persona, maiar(_,_)).
