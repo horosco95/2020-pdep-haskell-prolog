@@ -65,7 +65,7 @@ cantidadDeRegiones(Camino,Cantidad):-
     length(Lista,Cantidad).
 
 % parte B - 
-esVueltero(Camino):- not(list_to_set(Camino,Camino)).
+esVueltero(Camino):- nth1(Pos1,Camino,Zona), nth1(Pos2,Camino,Zona), Pos2\=Pos1.
 % parte C - 
 todosLosCaminosConducenAMordor([Camino]):- caminoConduceAMordor(Camino).
 todosLosCaminosConducenAMordor([UnCamino|Caminos]):- caminoConduceAMordor(UnCamino), todosLosCaminosConducenAMordor(Caminos). 
