@@ -48,9 +48,8 @@ caminoLogico([_]).
 caminoLogico([Zona1,Zona2|Cola]):- zonasLimitrofes(Zona1,Zona2), caminoLogico([Zona2|Cola]).
 
 % parte B -
-caminoSeguro([Zona1]):- perteneceA(Zona1,_).
-caminoSeguro([Zona1,Zona2]):- zonasLimitrofes(Zona1,Zona2), perteneceA(Zona1,Region1), perteneceA(Zona2,Region2), regionesLimitrofes(Region1,Region2).
-caminoSeguro([Zona1,Zona2,Zona3]):- not(primeras3ZonasMismaRegion([Zona1,Zona2,Zona3])).
+caminoSeguro([]).
+caminoSeguro([_,_]).
 caminoSeguro([Zona1,Zona2,Zona3|Cola]):- not(primeras3ZonasMismaRegion([Zona1,Zona2,Zona3])), caminoSeguro([Zona2,Zona3|Cola]).
 
 primeras3ZonasMismaRegion([Zona1,Zona2, Zona3|_]):- zonasLimitrofes(Zona1,Zona2),zonasLimitrofes(Zona2,Zona3),perteneceA(Zona1, MismaRegion),perteneceA(Zona2, MismaRegion),perteneceA(Zona3, MismaRegion).
