@@ -45,7 +45,6 @@ sonConsecutivos(Camino1,[Zona|_]):- puedeSeguirCon(Camino1,Zona).
 %% Punto 6
 % parte A - 
 caminoLogico([_]).
-caminoLogico([A,B]):- zonasLimitrofes(A,B).
 caminoLogico([Zona1,Zona2|Cola]):- zonasLimitrofes(Zona1,Zona2), caminoLogico([Zona2|Cola]).
 
 % parte B -
