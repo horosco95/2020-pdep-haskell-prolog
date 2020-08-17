@@ -100,9 +100,10 @@ armaViajero(Persona,ListaArmas):- viajero(Persona, guerrera(_, ListaArmasNivel))
 armaGuerrera(Arma,ListaArmas):- member((Arma,_),ListaArmas).
 % parte C - 
 nivelViajero(Persona, Nivel):- viajero(Persona, maiar(Nivel, _)).
-nivelViajero(Persona, Nivel):- viajero(Persona, guerrera(_,_,Nivel)), 
-    findall(Level, viajero(Persona, guerrera(_, _, Level)),ListaLevel), 
-    max_member(Nivel,ListaLevel).
+nivelViajero(Persona, Nivel):- viajero(Persona, guerrera(_, ListaArmasNivel)),
+    nivelGuerrera(Nivel,ListaArmasNivel),
+    forall(nivelGuerrera(Otros,ListaArmasNivel), Otros=<Nivel).
+nivelGuerrera(Nivel,ListaArmasNivel):- member((_,Nivel),ListaArmasNivel).	
 nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(hobbit, Edad)), Nivel is Edad / 4.
 nivelViajero(Persona, Nivel):- viajero(Persona, pacifista(ent, Edad)), Nivel is Edad / 100.
 %% Punto 4
