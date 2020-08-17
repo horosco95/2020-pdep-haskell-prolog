@@ -48,12 +48,12 @@ caminoLogico([_]).
 caminoLogico([Zona1,Zona2|Cola]):- zonasLimitrofes(Zona1,Zona2), caminoLogico([Zona2|Cola]).
 
 % parte B -
-caminoSeguro([A]):- perteneceA(A,_).
-caminoSeguro([A,B]):- zonasLimitrofes(A,B), perteneceA(A,Region1), perteneceA(B,Region2), regionesLimitrofes(Region1,Region2).
-caminoSeguro([A,B,C]):- not(primeras3ZonasMismaRegion([A,B,C])).
-caminoSeguro([A,B,C|Cola]):- not(primeras3ZonasMismaRegion([A,B,C])), caminoSeguro([B,C|Cola]).
+caminoSeguro([Zona1]):- perteneceA(Zona1,_).
+caminoSeguro([Zona1,Zona2]):- zonasLimitrofes(Zona1,Zona2), perteneceA(Zona1,Region1), perteneceA(Zona2,Region2), regionesLimitrofes(Region1,Region2).
+caminoSeguro([Zona1,Zona2,Zona3]):- not(primeras3ZonasMismaRegion([Zona1,Zona2,Zona3])).
+caminoSeguro([Zona1,Zona2,Zona3|Cola]):- not(primeras3ZonasMismaRegion([Zona1,Zona2,Zona3])), caminoSeguro([Zona2,Zona3|Cola]).
 
-primeras3ZonasMismaRegion([A,B,C|_]):- zonasLimitrofes(A,B),zonasLimitrofes(B,C),perteneceA(A, MismaRegion),perteneceA(B, MismaRegion),perteneceA(C, MismaRegion).
+primeras3ZonasMismaRegion([Zona1,Zona2, Zona3|_]):- zonasLimitrofes(Zona1,Zona2),zonasLimitrofes(Zona2,Zona3),perteneceA(Zona1, MismaRegion),perteneceA(Zona2, MismaRegion),perteneceA(Zona3, MismaRegion).
 % ------- TP ENTREGA 2 --------
 %% Punto 1
 % parte A - 
