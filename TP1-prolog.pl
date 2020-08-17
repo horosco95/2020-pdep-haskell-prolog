@@ -30,9 +30,14 @@ zonasLimitrofes(UnaZona,OtraZona):- perteneceA(UnaZona,Region),perteneceA(OtraZo
 regionesLimitrofes(UnaRegion,OtraRegion):- perteneceA(UnaZona,UnaRegion), perteneceA(OtraZona,OtraRegion), zonasLimitrofes(UnaZona,OtraZona), UnaRegion\=OtraRegion.
 
 % parte B - 
-regionesLejanas(UnaRegion,OtraRegion):- perteneceA(_,UnaRegion),not(regionesLimitrofes(UnaRegion,OtraRegion)),
-    not(terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion)),UnaRegion\=OtraRegion.
+regionesLejanas(Region1,Region2):- region(Region1),region(Region2), Region1\=Region2,sonLejanas(Region1,Region2).
+
+sonLejanas(Region1,Region2):- not(regionesLimitrofes(Region1,Region2)),
+    not(terceraRegionLimitrofeConAmbas(Region1,Region2)),Region1\=Region2.
+
 terceraRegionLimitrofeConAmbas(UnaRegion,OtraRegion):- regionesLimitrofes(UnaRegion,OtraEnComun),regionesLimitrofes(OtraEnComun,OtraRegion),UnaRegion\=OtraRegion.
+%%Generador de Regiones:
+region(Region):- perteneceA(_,Region).
 
 %% Punto 5
 % parte A - 
@@ -48,11 +53,12 @@ caminoLogico([_]).
 caminoLogico([Zona1,Zona2|Cola]):- zonasLimitrofes(Zona1,Zona2), caminoLogico([Zona2|Cola]).
 
 % parte B -
-caminoSeguro([]).
+caminoSeguro([_]).
 caminoSeguro([_,_]).
-caminoSeguro([Zona1,Zona2,Zona3|Cola]):- not(primeras3ZonasMismaRegion([Zona1,Zona2,Zona3])), caminoSeguro([Zona2,Zona3|Cola]).
+caminoSeguro([Zona1,Zona2,Zona3|Cola]):-tramoSeguro(Zona1,Zona2,Zona3), caminoSeguro([Zona2,Zona3|Cola]).
 
-primeras3ZonasMismaRegion([Zona1,Zona2, Zona3|_]):- zonasLimitrofes(Zona1,Zona2),zonasLimitrofes(Zona2,Zona3),perteneceA(Zona1, MismaRegion),perteneceA(Zona2, MismaRegion),perteneceA(Zona3, MismaRegion).
+tramoSeguro(Zona1,Zona2,Zona3):- not((perteneceA(Zona1,Region),perteneceA(Zona2,Region),perteneceA(Zona3,Region))).
+
 % ------- TP ENTREGA 2 --------
 %% Punto 1
 % parte A - 
